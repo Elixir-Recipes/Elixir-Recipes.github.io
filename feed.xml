@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elixir Recipes</title>
+    <description>A collection of Elixir programming language solutions to common problems.</description>
+    <link>http://elixir-recipes.github.io/</link>
+    <atom:link href="http://elixir-recipes.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 24 Mar 2016 06:08:16 +0800</pubDate>
+    <lastBuildDate>Thu, 24 Mar 2016 06:08:16 +0800</lastBuildDate>
+    <generator>Jekyll v3.0.3</generator>
+    
+  </channel>
+</rss>
