@@ -6,7 +6,7 @@ category: concurrency
 comments: true
 ---
 
-We define an Elixir function `pmap` that uses the [Task API](http://elixir-lang.org/docs/stable/elixir/Task.html) that converts sequential code into concurrent code by computing a value asynchronously:
+We define an Elixir function `pmap` using the [Task API](http://elixir-lang.org/docs/stable/elixir/Task.html) to convert sequential code into concurrent code by computing values asynchronously:
 
 {% highlight elixir %}
 defmodule Parallel do
