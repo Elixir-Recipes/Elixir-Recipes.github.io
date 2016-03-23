@@ -1,5 +1,20 @@
 # elixir-recipes
 
+## Building
+
+Create a new Markdown file in `source/_posts` with the right filename format. Examples can be found in the `source/_posts` directory.
+
+```
+jekyll serve
+```
+
+Go to `localhost:4000` to view the generated site.
+
+## Deploying
+
+```
+./deploy.sh
+```
 
 ### Copyright and license
 
