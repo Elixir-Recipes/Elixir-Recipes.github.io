@@ -10,18 +10,26 @@ jekyll serve
 
 Go to `localhost:4000` to view the generated site.
 
+## Contributing
+
+The `source` branch contains the source Markdown posts in `/_posts`.
+Create posts in Markdown and commit (on the `source` branch):
+
+```
+git add .
+git commit 'Add new recipe'
+git push
+```
+
+Then, send in a pull request!
+
 ## Deploying
 
 ```
-./deploy.sh
+rake publish
 ```
 
-### Copyright and license
-
-It is under [the MIT license](/LICENSE).
-
-> :warning:
-  Please remove metas `<meta name="robots" content="noindex">` and `<meta name="googlebot" content="noindex">` in `_layouts/default.html`
+This command will build and push the local `_site` subdirectory to the `master` branch for Github Pages to render.
 
 ## Contributors
 

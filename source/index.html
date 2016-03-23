@@ -19,9 +19,8 @@ bodyclass: home
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" title="Permalink to: {{ post.title }}">{{ post.title }}</a>
         </h1>
         <span class="post-meta">
-          <time class="post-date" datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date: "%b %-d, %Y" }}{% if post.category %} | {{ post.category }}{% endif %}</time>
+          <time class="post-date" datetime="{{ post.date | date:"%Y-%m-%d" }}">Submitted {{ post.date | date: "%b %-d, %Y" }}{% if post.category %} in <strong>{{ post.category }}{% endif %}</strong></time>
         </span>
-        <p><a href="{{ post.url | prepend: site.baseurl }}" title="Permalink to: {{ post.title }}" class="read-more">{{ post.content | strip_html | truncatewords: 30 }}</a></p>
       {% endif %}
     </article>
   {% endfor %}
