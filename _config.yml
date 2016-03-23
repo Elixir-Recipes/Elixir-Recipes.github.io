@@ -22,8 +22,8 @@ description: "A collection of Elixir programming language solutions to common pr
 keywords: "Elixir, language, solutions, patterns, recipes, cookbook"
 url: http://elixir-recipes.github.io
 baseurl: ""
-domain_name: elixir-recipes.github.io
 repo: http://github.com/ElixirRecipes/elixir-recipes.github.io
+disqus_shortname: yosriady
 
 author:
   name      : Yos Riady
