@@ -5,13 +5,13 @@
     <description>A collection of Elixir programming language solutions to common problems.</description>
     <link>http://elixir-recipes.github.io/</link>
     <atom:link href="http://elixir-recipes.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 24 Mar 2016 07:28:49 +0800</pubDate>
-    <lastBuildDate>Thu, 24 Mar 2016 07:28:49 +0800</lastBuildDate>
+    <pubDate>Thu, 24 Mar 2016 07:39:22 +0800</pubDate>
+    <lastBuildDate>Thu, 24 Mar 2016 07:39:22 +0800</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
       <item>
         <title>Parallel Map</title>
-        <description>&lt;p&gt;We define an Elixir function &lt;code class=&quot;highlighter-rouge&quot;&gt;pmap&lt;/code&gt; that uses the &lt;a href=&quot;http://elixir-lang.org/docs/stable/elixir/Task.html&quot;&gt;Task API&lt;/a&gt; that converts sequential code into concurrent code by computing a value asynchronously:&lt;/p&gt;
+        <description>&lt;p&gt;We define an Elixir function &lt;code class=&quot;highlighter-rouge&quot;&gt;pmap&lt;/code&gt; using the &lt;a href=&quot;http://elixir-lang.org/docs/stable/elixir/Task.html&quot;&gt;Task API&lt;/a&gt; to convert sequential code into concurrent code by computing values asynchronously:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Parallel&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pmap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;

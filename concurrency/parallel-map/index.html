@@ -70,7 +70,7 @@
           <article class="post">
 
   <div class="post-content container">
-    <p>We define an Elixir function <code class="highlighter-rouge">pmap</code> that uses the <a href="http://elixir-lang.org/docs/stable/elixir/Task.html">Task API</a> that converts sequential code into concurrent code by computing a value asynchronously:</p>
+    <p>We define an Elixir function <code class="highlighter-rouge">pmap</code> using the <a href="http://elixir-lang.org/docs/stable/elixir/Task.html">Task API</a> to convert sequential code into concurrent code by computing values asynchronously:</p>
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defmodule</span> <span class="no">Parallel</span> <span class="k">do</span>
   <span class="k">def</span> <span class="n">pmap</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
