@@ -100,16 +100,6 @@
   .no-results {
     color: #f00;
   }
-
-  .recipes-link {
-    color: rgba(255,255,255,0.3);
-    text-decoration:none;
-
-    &:hover {
-      color: rgba(255,255,255,0.75);
-      text-decoration:underline;
-    }
-  }
 }
 
 .dropdown {
@@ -141,6 +131,16 @@
   a:active {
     background-color: $primary-color;
     color: $white-color;
+  }
+}
+
+.recipes-link {
+  color: rgba(255,255,255,0.3);
+  text-decoration:none;
+
+  &:hover {
+    color: rgba(255,255,255,0.75);
+    text-decoration:underline;
   }
 }
 

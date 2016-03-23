@@ -1,5 +1,7 @@
 # elixir-recipes
 
+> Pull Requests are most welcome!
+
 ## Building
 
 Create a new Markdown file in `source/_posts` with the right filename format. Examples can be found in the `source/_posts` directory.
@@ -21,7 +23,7 @@ git commit 'Add new recipe'
 git push
 ```
 
-Then, send in a pull request!
+Then, send in a [pull request](https://github.com/Elixir-Recipes/elixir-recipes.github.io/pulls)!
 
 ## Deploying
 

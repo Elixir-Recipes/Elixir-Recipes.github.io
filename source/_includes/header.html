@@ -29,6 +29,7 @@
     {% else %}
       <h1>{{ site.name }}</h1>
       {% include search.html %}
+      <small class='text-center'><a class="recipes-link" href="{{ "/archive" | prepend: site.baseurl }}">View recipes by category</a></small>
     {% endif %}
 
   </div>
