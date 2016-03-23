@@ -17,7 +17,7 @@
 
 
 
-<link rel="canonical" href="http://elixir-recipes.github.io/jekyll%20update/welcome-to-jekyll/">
+<link rel="canonical" href="http://elixir-recipes.github.io/parallelization/welcome-to-jekyll/">
 <link rel="alternate" type="application/rss+xml" title="Elixir Recipes" href="http://elixir-recipes.github.io/feed.xml" />
 
   </head>
@@ -62,17 +62,15 @@
           <article class="post">
 
   <div class="post-content container">
-    <p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+    <p>We define an Elixir function <code class="highlighter-rouge">pmap</code> that uses the <a href="http://elixir-lang.org/docs/stable/elixir/Task.html">Task API</a> that converts sequential code into concurrent code by computing a value asynchronously:</p>
 
-<p>To add new posts, simply add a file in the <code class="highlighter-rouge">_posts</code> directory that follows the convention <code class="highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
-
-<p>Jekyll also offers powerful support for code snippets:</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defmodule</span> <span class="no">Parallel</span> <span class="k">do</span>
+  <span class="k">def</span> <span class="n">pmap</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
+    <span class="n">collection</span>
+    <span class="o">|&gt;</span> <span class="no">Enum</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="no">Task</span><span class="o">.</span><span class="n">async</span><span class="p">(</span><span class="k">fn</span> <span class="o">-&gt;</span> <span class="n">func</span><span class="o">.</span><span class="p">(</span><span class="nv">&amp;1</span> <span class="k">end</span><span class="p">))))</span>
+    <span class="o">|&gt;</span> <span class="no">Enum</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="no">Task</span><span class="o">.</span><span class="n">await</span><span class="o">/</span><span class="m">1</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
 
 <p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>.</p>
 
@@ -82,12 +80,12 @@
 
       <span>Share this: </span>
 
-      <a href="http://twitter.com/share?text=Parallel map&amp;url=http://elixir-recipes.github.io/jekyll%20update/welcome-to-jekyll/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
+      <a href="http://twitter.com/share?text=Parallel map&amp;url=http://elixir-recipes.github.io/parallelization/welcome-to-jekyll/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <i class="icon icon-twitter-rounded"></i>
       </a>
 
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://elixir-recipes.github.io/jekyll%20update/welcome-to-jekyll/"
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://elixir-recipes.github.io/parallelization/welcome-to-jekyll/"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <i class="icon icon-facebook-rounded"></i>
       </a>
@@ -106,7 +104,7 @@
 
       <script type="text/javascript">
         var disqus_shortname = '';
-        var disqus_identifier = '/jekyll%20update/welcome-to-jekyll';
+        var disqus_identifier = '/parallelization/welcome-to-jekyll';
         var disqus_title = 'Parallel map';
         var disqus_url = 'http://elixir-recipes.github.io';
         /*var disqus_developer = 1;*/
