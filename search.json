@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Filtering collections",
+      "category" : "collections",
+      "tags"     : "",
+      "url"      : "/collections/filtering-collections/",
+      "date"     : "2016-03-25 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Parallel Map",
       "category" : "concurrency",
       "tags"     : "",
