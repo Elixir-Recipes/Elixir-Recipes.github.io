@@ -165,7 +165,7 @@
  */
 .site-header,
 .site-footer {
-  background: url("https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"), linear-gradient(10deg, #20392B, #7F99BE), no-repeat #7F99BE scroll;
+  background: url("/images/bg.png"), linear-gradient(10deg, #20392B, #7F99BE), no-repeat #7F99BE scroll;
   background-color: $secondary-color;
   background-repeat: no-repeat;
   background-size: cover;

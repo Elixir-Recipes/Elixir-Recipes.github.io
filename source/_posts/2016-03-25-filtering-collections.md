@@ -13,6 +13,7 @@ Elixir provides a set of functions that enumerate over collections which impleme
 - a collection, and
 - a function which returns a `boolean`
 
+
 Filtering a list:
 
 {% highlight elixir %}

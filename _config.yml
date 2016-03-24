@@ -1,5 +1,7 @@
 permalink   : /:categories/:title/
 markdown    : kramdown
+syntax_highlighter: coderay
+highlighter: rouge
 
 paginate: 8 #6
 comments: true
