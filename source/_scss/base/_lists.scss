@@ -29,3 +29,10 @@ dl {
     margin: 0;
   }
 }
+
+.post-content {
+  ul, ol {
+    list-style-type: circle;
+    margin-left: 20px;
+  }
+}

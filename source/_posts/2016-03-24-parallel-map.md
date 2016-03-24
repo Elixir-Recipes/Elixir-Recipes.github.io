@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Parallel Map"
-keywords: "welcome, update, Jekyll"
+keywords: "parallel, collection, enumeration, map"
 category: concurrency
 comments: true
 ---

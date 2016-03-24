@@ -20,15 +20,6 @@
   };
 }
 
-.hr {
-  display: block;
-  width: 60px;
-  height: 3px;
-  background-color: darken($silver-color, 5%);
-  margin: 3em auto;
-  border: none;
-}
-
 .input {
   border-radius: 4px;
   box-shadow: none;
@@ -334,11 +325,6 @@ $sliding-panel-background-focus: lighten($sliding-panel-background, 5%);
 
   .post-content a {
     border-bottom: 1px dashed #90A3B6;
-  }
-
-  &:after {
-    content: '';
-    @extend .hr;
   }
 }
 
