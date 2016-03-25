@@ -10,18 +10,18 @@
 
 <title>
   
-    Elixir Recipes
+    Type Checking &middot; Elixir Recipes
   
 </title>
 <meta name="description" content="A collection of Elixir programming language solutions to common problems.">
-<meta name="keywords" content="Elixir, language, solutions, patterns, recipes, cookbook">
+<meta name="keywords" content="types, static analysis, type safety">
 <link rel="stylesheet" href="/css/main.css">
 
 
 
 
 
-<link rel="canonical" href="http://elixir-recipes.github.io/">
+<link rel="canonical" href="http://elixir-recipes.github.io/types/type-checking/">
 <link rel="alternate" type="application/rss+xml" title="Elixir Recipes" href="http://elixir-recipes.github.io/feed.xml" />
 
 <!-- Icons -->
@@ -29,7 +29,7 @@
 <link rel="icon" href="/images/favicon.ico">
 <script>base_url = "";</script>
   </head>
-  <body class="home">
+  <body class="">
 
     <main class="main-container">
 
@@ -57,14 +57,8 @@
     </a>
 
     
-      <h1>Elixir Recipes</h1>
-      <div class="search">
-  <i class="icon icon-search"></i>
-  <input type="text" id="search-input" class="input" placeholder="type to search...">
-  <ul id="results-container" class="dropdown"></ul>
-</div>
-
-      <small class='text-center'><a class="recipes-link" href="/archive">View recipes by category</a></small>
+      <h1 class="post-title">Type Checking</h1>
+      <p class="post-meta">Mar 25, 2015</p>
     
 
   </div>
@@ -73,77 +67,70 @@
 
 
         <section class="main-content">
-          <section class="posts txt-center container">
+          <article class="post">
+  <div class="post-content container">
+    <p>You can perform string substitution using <code class="highlighter-rouge">#{}</code></p>
 
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/strings/string-substitution/" title="Permalink to: String substitution">String substitution</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-03-25">Submitted Mar 25, 2016 in <strong>strings</strong></time>
-        </span>
-      
-    </article>
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/flow%20control/pipelining-operations/" title="Permalink to: Pipelining operations">Pipelining operations</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-03-25">Submitted Mar 25, 2016 in <strong>flow control</strong></time>
-        </span>
-      
-    </article>
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/collections/filtering-collections/" title="Permalink to: Filtering collections">Filtering collections</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-03-25">Submitted Mar 25, 2016 in <strong>collections</strong></time>
-        </span>
-      
-    </article>
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/concurrency/parallel-map/" title="Permalink to: Parallel Map">Parallel Map</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-03-24">Submitted Mar 24, 2016 in <strong>concurrency</strong></time>
-        </span>
-      
-    </article>
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/typespecs/type-checking/" title="Permalink to: Type Checking">Type Checking</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2015-03-25">Submitted Mar 25, 2015 in <strong>typespecs</strong></time>
-        </span>
-      
-    </article>
-  
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">iex</span><span class="o">&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="sd">"</span><span class="s2">José"</span>
+<span class="n">iex</span><span class="o">&gt;</span> <span class="no">IO</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="sd">"</span><span class="s2">Hello, </span><span class="si">#{</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span><span class="p">)</span>
+<span class="no">Hello</span><span class="p">,</span> <span class="n">Jos</span><span class="err">é</span><span class="n">!</span>
+<span class="ss">:ok</span></code></pre></figure>
 
-  <nav class="pagination" role="pagination">
-    <ul>
-      
+<p><strong>Additional reading:</strong></p>
 
-      <li><span class="page-number">Page 1 of 1</span></li>
+<ul>
+  <li><a href="http://elixir-lang.org/docs/stable/elixir/typespecs.html#Notes">Typespecs</a></li>
+</ul>
 
-      
-    </ul>
-  </nav>
+  </div>
 
-</section>
+  <div class="container">
+    <aside class="share">
 
+      <span>Share this: </span>
+
+      <a href="http://twitter.com/share?text=Type Checking&amp;url=http://elixir-recipes.github.io/types/type-checking/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="icon icon-twitter-rounded"></i>
+      </a>
+
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://elixir-recipes.github.io/types/type-checking/"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <i class="icon icon-facebook-rounded"></i>
+      </a>
+    </aside>
+  </div>
+</article>
+
+
+<hr>
+
+<aside id="comments" class="disqus">
+
+  <div class="container">
+    <h3><i class="icon icon-comments-o"></i> Comments</h3>
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+      var disqus_shortname = 'yosriady';
+      var disqus_identifier = '/types/type-checking';
+      var disqus_title = 'Type Checking';
+      var disqus_url = 'http://elixir-recipes.github.io';
+      /*var disqus_developer = 1;*/
+
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+
+    <noscript>
+      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+</aside>
 
         </section>
 
