@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "String substitution",
+      "category" : "strings",
+      "tags"     : "",
+      "url"      : "/strings/string-substitution/",
+      "date"     : "2016-03-25 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Pipelining operations",
       "category" : "flow control",
       "tags"     : "",
