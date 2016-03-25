@@ -11,6 +11,9 @@ code {
   border: 1px solid #ddd;
   border-radius: 3px;
 }
+a code {
+  color: #9768d1;
+}
 pre {
   display: block;
   margin-top: 0;
@@ -48,7 +51,7 @@ pre code {
   word-wrap: normal; /* horizontal scrolling */
   background: #343642;
   color: #C1C2C3;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5em;
 }
 .highlight .hll { background-color: #ffc; }
 .highlight .gd { color: #2e3436; background-color: #0e1416; }
