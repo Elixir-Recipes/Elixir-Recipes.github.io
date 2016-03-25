@@ -6,14 +6,14 @@ category: "strings"
 comments: true
 ---
 
+> Elixir's regex is based on [PCRE](http://www.pcre.org) (Perl Compatible Regular Expressions). 
+
 The `Regex` module gives us the following methods:
 
 - `run`
 - `scan`
 - `split`
 - `replace`
-
-> Elixir's regex is based on [PCRE](http://www.pcre.org) (Perl Compatible Regular Expressions). 
 
 `run` runs the regular expression against the given string until the first match.
 
