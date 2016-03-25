@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Pipelining operations",
+      "category" : "flow control",
+      "tags"     : "",
+      "url"      : "/flow%20control/pipelining-operations/",
+      "date"     : "2016-03-25 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Filtering collections",
       "category" : "collections",
       "tags"     : "",
