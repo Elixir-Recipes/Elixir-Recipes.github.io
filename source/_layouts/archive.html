@@ -10,7 +10,7 @@ layout: default
       {% for post in posts %}
         <li>
          <h4 class="post-title">
-          <a href="{{ site.url }}{{ post.url }}">
+          <a href="{{ post.url | prepend: site.baseurl}}">
             {{ post.title }}
           </a>
         </h4>
