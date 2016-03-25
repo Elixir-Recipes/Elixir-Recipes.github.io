@@ -80,8 +80,8 @@
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="no">Enum</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="no">List</span><span class="o">.</span><span class="n">flatten</span><span class="p">([</span><span class="m">1</span><span class="p">,</span> <span class="p">[</span><span class="m">2</span><span class="p">],</span> <span class="m">3</span><span class="p">]),</span> <span class="k">fn</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="m">2</span> <span class="k">end</span><span class="p">)</span></code></pre></figure>
 
-<p>The above code appears in reverse order, where earlier operations are the inner expressions.
-The version using pipes follows a clearer sequence of operations.</p>
+<p>The above code appears in reverse order, where earlier operations are inner expressions. We have to start from the middle and read outwards to understand the sequence.
+Using pipes leads to a clearer sequence of operations.</p>
 
 <p>Here’s another example taken from the <a href="https://github.com/elixir-lang/ecto/blob/master/lib/ecto/migration.ex">Ecto</a> database wrapper:</p>
 
