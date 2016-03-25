@@ -6,9 +6,9 @@ category: "IEx"
 comments: true
 ---
 
-`IEx` or Interactive EliXir gives you the helper `h` macro which prints the documentation (retrieved from `@moduledoc` or `@doc` attributes defined in the code.) of a given module or function. 
+`IEx` or Interactive EliXir gives you the helper `h` macro which prints the documentation of a given module or function. Documentation is retrieved from `@moduledoc` or `@doc` attributes defined in the source code of the module or function.
 
-`h` can also accept itself as an argument.
+`h` can also accept itself as an argument:
 
 {% highlight elixir %}
 iex> h h
