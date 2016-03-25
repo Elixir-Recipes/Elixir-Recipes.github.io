@@ -2,7 +2,7 @@
 layout: post
 title:  "Getting help"
 keywords: "help, documentation"
-category: "iex"
+category: "IEx"
 comments: true
 ---
 
