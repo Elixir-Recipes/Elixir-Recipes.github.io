@@ -3,7 +3,7 @@ markdown    : kramdown
 syntax_highlighter: coderay
 highlighter: rouge
 
-paginate: 8 #6
+paginate: 5
 comments: true
 paginate_path: "/page/:num"
 
