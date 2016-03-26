@@ -1,6 +1,70 @@
 [
   
     {
+      "title"    : "Retrieving values from history",
+      "category" : "IEx",
+      "tags"     : "",
+      "url"      : "/iex/retrieving-history/",
+      "date"     : "2016-03-26 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Regular expressions",
+      "category" : "strings",
+      "tags"     : "",
+      "url"      : "/strings/regular-expressions/",
+      "date"     : "2016-03-26 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "List membership",
+      "category" : "lists",
+      "tags"     : "",
+      "url"      : "/lists/list-membership/",
+      "date"     : "2016-03-26 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "List difference",
+      "category" : "lists",
+      "tags"     : "",
+      "url"      : "/lists/list-difference/",
+      "date"     : "2016-03-26 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "List concatenation",
+      "category" : "lists",
+      "tags"     : "",
+      "url"      : "/lists/list-concatenation/",
+      "date"     : "2016-03-26 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Getting help",
+      "category" : "IEx",
+      "tags"     : "",
+      "url"      : "/iex/getting-help/",
+      "date"     : "2016-03-26 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Anonymous functions",
+      "category" : "functions",
+      "tags"     : "",
+      "url"      : "/functions/anonymous-functions/",
+      "date"     : "2016-03-26 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Type Checking",
+      "category" : "typespecs",
+      "tags"     : "",
+      "url"      : "/typespecs/type-checking/",
+      "date"     : "2016-03-25 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "String substitution",
       "category" : "strings",
       "tags"     : "",
@@ -30,14 +94,6 @@
       "tags"     : "",
       "url"      : "/concurrency/parallel-map/",
       "date"     : "2016-03-24 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "Type Checking",
-      "category" : "typespecs",
-      "tags"     : "",
-      "url"      : "/typespecs/type-checking/",
-      "date"     : "2015-03-25 00:00:00 +0800"
     } 
   
 ]
