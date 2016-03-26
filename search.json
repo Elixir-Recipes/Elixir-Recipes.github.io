@@ -9,6 +9,14 @@
     } ,
   
     {
+      "title"    : "Default function parameters",
+      "category" : "functions",
+      "tags"     : "",
+      "url"      : "/functions/default-function-parameters/",
+      "date"     : "2016-03-27 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Retrieving values from history",
       "category" : "IEx",
       "tags"     : "",
