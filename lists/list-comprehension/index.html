@@ -69,17 +69,19 @@
         <section class="main-content">
           <article class="post">
   <div class="post-content container">
-    <p>Comprehensions in Elixir has the following syntax:</p>
+    <p>Comprehensions in Elixir have the following syntax:</p>
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">for</span> <span class="o">&lt;</span><span class="n">generator</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="ow">or</span> <span class="n">filter</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">commas</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="ss">into:</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">],</span> <span class="k">do</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span> </code></pre></figure>
 
-<p>Generators such as <code class="highlighter-rouge">x</code> are named local variables you can use in the <code class="highlighter-rouge">expression</code> argument.</p>
+<p>For example:</p>
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">iex</span><span class="o">&gt;</span> <span class="n">for</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">],</span> <span class="k">do</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
 <span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">9</span><span class="p">]</span></code></pre></figure>
 
 <blockquote>
-  <p>Note that variable assignments such as <code class="highlighter-rouge">x</code> in comprehensions are local in scope, it doesn’t affect variables with the same name in the outer scope.</p>
+  <p>Generators such as <code class="highlighter-rouge">x</code> are named local variables you can use in the <code class="highlighter-rouge">expression</code> argument.</p>
+
+  <p>Note that variable assignments such as <code class="highlighter-rouge">x</code> in comprehensions are local in scope, so it doesn’t affect variables with the same name in the outer scope.</p>
 </blockquote>
 
 <p>We can have multiple generators <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code>:</p>
@@ -96,7 +98,7 @@
   <p>Unlike guard clauses, you can call your own module’s methods within filter.</p>
 </blockquote>
 
-<p>The <code class="highlighter-rouge">into</code> parameter takes in a collection - values that implement <a href="http://elixir-lang.org/docs/stable/elixir/Collectable.html"><code class="highlighter-rouge">Collectable</code></a> - for storing the comprehension’s results:</p>
+<p>The <code class="highlighter-rouge">into</code> parameter takes in a collection for storing the comprehension’s results:</p>
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">iex</span><span class="o">&gt;</span> <span class="n">for</span> <span class="n">item</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="ss">:bananas</span><span class="p">,</span> <span class="ss">:milk</span><span class="p">],</span> 
 	<span class="n">quantity</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="m">5</span><span class="p">,</span> <span class="m">2</span><span class="p">],</span> 
@@ -114,10 +116,10 @@
 	<span class="p">[</span><span class="ss">id:</span> <span class="m">4</span><span class="p">,</span> <span class="ss">name:</span> <span class="ss">:yoghurt</span><span class="p">]</span>
 <span class="p">]</span> <span class="c1"># list of keyword lists</span>
 <span class="n">iex</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">for</span> <span class="n">item</span> <span class="o">&lt;-</span> <span class="n">cart</span><span class="p">,</span> 
-	<span class="p">{</span><span class="n">_</span><span class="p">,</span> <span class="n">item_name</span><span class="p">}</span> <span class="o">&lt;-</span> <span class="n">item</span><span class="p">,</span> 
-	<span class="p">(</span><span class="n">item_name</span> <span class="ow">in</span> <span class="no">Keyword</span><span class="o">.</span><span class="n">keys</span> <span class="n">prices</span><span class="p">),</span> 
-	<span class="p">{</span><span class="n">name</span><span class="p">,</span> <span class="n">price</span><span class="p">}</span> <span class="o">&lt;-</span> <span class="n">prices</span><span class="p">,</span> 
-	<span class="n">item_name</span> <span class="o">==</span> <span class="n">name</span><span class="p">,</span> 
+	<span class="p">{</span><span class="n">_</span><span class="p">,</span> <span class="n">item_name</span><span class="p">}</span> <span class="o">&lt;-</span> <span class="n">item</span><span class="p">,</span> <span class="c1"># generator</span>
+	<span class="p">(</span><span class="n">item_name</span> <span class="ow">in</span> <span class="no">Keyword</span><span class="o">.</span><span class="n">keys</span> <span class="n">prices</span><span class="p">),</span> <span class="c1"># filter</span>
+	<span class="p">{</span><span class="n">name</span><span class="p">,</span> <span class="n">price</span><span class="p">}</span> <span class="o">&lt;-</span> <span class="n">prices</span><span class="p">,</span> <span class="c1"># generator </span>
+	<span class="n">item_name</span> <span class="o">==</span> <span class="n">name</span><span class="p">,</span> <span class="c1"># filter</span>
 	<span class="k">do</span><span class="p">:</span> <span class="n">price</span>
 <span class="p">[</span><span class="m">1.8</span><span class="p">,</span> <span class="m">4.0</span><span class="p">,</span> <span class="m">1.8</span><span class="p">]</span></code></pre></figure>
 
