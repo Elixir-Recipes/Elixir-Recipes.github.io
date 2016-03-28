@@ -1,6 +1,22 @@
 [
   
     {
+      "title"    : "Pattern matching with structs",
+      "category" : "pattern matching",
+      "tags"     : "",
+      "url"      : "/pattern%20matching/pattern-matching-structs/",
+      "date"     : "2016-03-28 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "List comprehension",
+      "category" : "lists",
+      "tags"     : "",
+      "url"      : "/lists/list-comprehension/",
+      "date"     : "2016-03-28 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Guard clauses",
       "category" : "functions",
       "tags"     : "",
