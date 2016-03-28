@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Integer code of a character",
+      "category" : "characters",
+      "tags"     : "",
+      "url"      : "/characters/integer-code-of-chars/",
+      "date"     : "2016-03-29 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "List comprehension",
       "category" : "lists",
       "tags"     : "",
