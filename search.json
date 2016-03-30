@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Project configuration",
+      "category" : "mix",
+      "tags"     : "",
+      "url"      : "/mix/project-configuration/",
+      "date"     : "2016-03-30 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Capturing functions",
       "category" : "functions",
       "tags"     : "",
