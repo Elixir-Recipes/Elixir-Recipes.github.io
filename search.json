@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Capturing functions",
+      "category" : "functions",
+      "tags"     : "",
+      "url"      : "/functions/capturing-functions/",
+      "date"     : "2016-03-30 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Parsing command line arguments",
       "category" : "cli",
       "tags"     : "",
