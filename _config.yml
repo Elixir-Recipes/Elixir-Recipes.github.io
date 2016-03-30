@@ -15,6 +15,8 @@ sass:
 
 gems:
 - jekyll-paginate
+- jekyll-sitemap
+- jemoji
 
 # site title, description, meta_description, meta_keywords
 # Details for the RSS feed generator
