@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="REvSdOuXsnRcvRVGXVhLRG_6ZFcu3tMz9POkG0Uy1g4" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -74,7 +75,15 @@
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">iex</span><span class="o">&gt;</span> <span class="no">OptionParser</span><span class="o">.</span><span class="n">parse</span><span class="p">([</span><span class="sd">"</span><span class="s2">--source-path"</span><span class="p">,</span> <span class="sd">"</span><span class="s2">lib"</span><span class="p">,</span> <span class="sd">"</span><span class="s2">test/enum_test.exs"</span><span class="p">,</span> <span class="sd">"</span><span class="s2">--verbose"</span><span class="p">])</span>
 <span class="p">{[</span><span class="ss">source_path:</span> <span class="sd">"</span><span class="s2">lib"</span><span class="p">,</span> <span class="ss">verbose:</span> <span class="no">true</span><span class="p">],</span> <span class="p">[</span><span class="sd">"</span><span class="s2">test/enum_test.exs"</span><span class="p">],</span> <span class="p">[]}</span></code></pre></figure>
 
-<p>You can pattern match the result:</p>
+<p>The return value is a triple (a 3-size tuple) containing three lists:</p>
+
+<ul>
+  <li>a keyword list of flags/switches and their values</li>
+  <li>a list of other non-switch arguments</li>
+  <li>a keyword list of invalid flags and their values</li>
+</ul>
+
+<p>You can pattern match the resulting tuple:</p>
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">parsed</span> <span class="o">=</span> <span class="no">OptionParser</span><span class="o">.</span><span class="n">parse</span><span class="p">([</span><span class="sd">"</span><span class="s2">--source-path"</span><span class="p">,</span> <span class="sd">"</span><span class="s2">lib"</span><span class="p">,</span> <span class="sd">"</span><span class="s2">test/enum_test.exs"</span><span class="p">,</span> <span class="sd">"</span><span class="s2">--verbose"</span><span class="p">])</span>
 <span class="k">case</span> <span class="n">parsed</span> <span class="k">do</span>
