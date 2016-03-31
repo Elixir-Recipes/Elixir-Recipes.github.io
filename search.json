@@ -1,6 +1,30 @@
 [
   
     {
+      "title"    : "Logging with Logger",
+      "category" : "logging",
+      "tags"     : "",
+      "url"      : "/logging/logging-with-logger/",
+      "date"     : "2016-03-31 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Documentation with ExDoc",
+      "category" : "documentation",
+      "tags"     : "",
+      "url"      : "/documentation/documentation-with-exdoc/",
+      "date"     : "2016-03-31 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Doctests",
+      "category" : "testing",
+      "tags"     : "",
+      "url"      : "/testing/doctests/",
+      "date"     : "2016-03-31 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Project configuration",
       "category" : "mix",
       "tags"     : "",
