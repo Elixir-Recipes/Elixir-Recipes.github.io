@@ -10,18 +10,18 @@
 
 <title>
   
-    Documentation with ExDoc &middot; Elixir Recipes
+    Spawning processes &middot; Elixir Recipes
   
 </title>
 <meta name="description" content="A collection of Elixir programming language solutions to common problems.">
-<meta name="keywords" content="documentation">
+<meta name="keywords" content="processing, spawn, concurrency">
 <link rel="stylesheet" href="/css/main.css">
 
 
 
 
 
-<link rel="canonical" href="http://elixir-recipes.github.io/documentation/documentation-with-exdoc/">
+<link rel="canonical" href="http://elixir-recipes.github.io/concurrency/spawning-processes/">
 <link rel="alternate" type="application/rss+xml" title="Elixir Recipes" href="http://elixir-recipes.github.io/feed.xml" />
 
 <!-- Icons -->
@@ -57,8 +57,8 @@
     </a>
 
     
-      <h1 class="post-title">Documentation with ExDoc</h1>
-      <p class="post-meta">Mar 31, 2016</p>
+      <h1 class="post-title">Spawning processes</h1>
+      <p class="post-meta">Apr 1, 2016</p>
     
 
   </div>
@@ -69,26 +69,29 @@
         <section class="main-content">
           <article class="post">
   <div class="post-content container">
-    <p>To generate documentation from <code class="highlighter-rouge">@doc</code> and <code class="highlighter-rouge">@moduledoc</code> attributes in your source code, add <code class="highlighter-rouge">ex_doc</code> and a markdown processor as dependencies into your <code class="highlighter-rouge">mix.exs</code> file:</p>
+    <p><code class="highlighter-rouge">spawn</code> creates a new Erlang VM process to run a given module, function, and arguments and returns its process id <code class="highlighter-rouge">pid</code>.</p>
 
-<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="c1"># config/mix.exs</span>
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defmodule</span> <span class="no">Bob</span> <span class="k">do</span>
+  <span class="k">def</span> <span class="n">say</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="k">do</span>
+    <span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="sd">"</span><span class="s2">[</span><span class="si">#{</span><span class="n">inspect</span> <span class="n">self</span><span class="si">}</span><span class="s2">] Bob says: </span><span class="si">#{</span><span class="n">message</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
-<span class="k">def</span> <span class="n">deps</span> <span class="k">do</span>
-  <span class="p">[{</span><span class="ss">:ex_doc</span><span class="p">,</span> <span class="sd">"</span><span class="s2">~&gt; 0.11"</span><span class="p">,</span> <span class="ss">only:</span> <span class="ss">:dev</span><span class="p">},</span>
-   <span class="p">{</span><span class="ss">:earmark</span><span class="p">,</span> <span class="sd">"</span><span class="s2">~&gt; 0.1"</span><span class="p">,</span> <span class="ss">only:</span> <span class="ss">:dev</span><span class="p">]</span>
-<span class="k">end</span></code></pre></figure>
+<span class="n">iex</span><span class="o">&gt;</span> <span class="no">Bob</span><span class="o">.</span><span class="n">say</span> <span class="sd">"</span><span class="s2">I'm Bob"</span>
+<span class="p">[</span><span class="c1">#PID&lt;0.57.0&gt;] Bob says: sup</span>
+<span class="ss">:ok</span>
 
-<blockquote>
-  <p>You can use Markdown within Elixir <code class="highlighter-rouge">@doc</code> and <code class="highlighter-rouge">@moduledoc</code> attributes.</p>
-</blockquote>
+<span class="n">iex</span><span class="o">&gt;</span> <span class="n">spawn</span><span class="p">(</span><span class="no">Bob</span><span class="p">,</span> <span class="ss">:say</span><span class="p">,</span> <span class="p">[</span><span class="sd">"</span><span class="s2">I'm Bob"</span><span class="p">])</span>
+<span class="p">[</span><span class="c1">#PID&lt;0.101.0&gt;] Bob says: I'm Bob</span>
+<span class="c1">#PID&lt;0.101.0&gt;</span></code></pre></figure>
 
-<p>Then, run <code class="highlighter-rouge">mix docs</code>. 
-An example output is the <a href="http://elixir-lang.org/docs/stable/elixir/">official Elixir Docs</a>.</p>
+<p>Check the <code class="highlighter-rouge">PID</code>s that are printed. We’ve just run the <code class="highlighter-rouge">Bob.say</code> function as a separate process.</p>
 
 <p><strong>Additional reading:</strong></p>
 
 <ul>
-  <li><a href="https://github.com/elixir-lang/ex_doc">ex_doc</a></li>
+  <li><a href="http://elixir-lang.org/getting-started/processes.html">Processes</a></li>
+  <li><code class="highlighter-rouge">iex&gt; h Process</code></li>
 </ul>
 
   </div>
@@ -98,12 +101,12 @@ An example output is the <a href="http://elixir-lang.org/docs/stable/elixir/">of
 
       <span>Share this: </span>
 
-      <a href="http://twitter.com/share?text=Documentation with ExDoc&amp;url=http://elixir-recipes.github.io/documentation/documentation-with-exdoc/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
+      <a href="http://twitter.com/share?text=Spawning processes&amp;url=http://elixir-recipes.github.io/concurrency/spawning-processes/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <i class="icon icon-twitter-rounded"></i>
       </a>
 
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://elixir-recipes.github.io/documentation/documentation-with-exdoc/"
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://elixir-recipes.github.io/concurrency/spawning-processes/"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <i class="icon icon-facebook-rounded"></i>
       </a>
@@ -122,8 +125,8 @@ An example output is the <a href="http://elixir-lang.org/docs/stable/elixir/">of
 
     <script type="text/javascript">
       var disqus_shortname = 'yosriady';
-      var disqus_identifier = '/documentation/documentation-with-exdoc';
-      var disqus_title = 'Documentation with ExDoc';
+      var disqus_identifier = '/concurrency/spawning-processes';
+      var disqus_title = 'Spawning processes';
       var disqus_url = 'http://elixir-recipes.github.io';
       /*var disqus_developer = 1;*/
 

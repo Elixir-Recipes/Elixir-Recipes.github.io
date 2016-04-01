@@ -5,9 +5,45 @@
     <description>A collection of Elixir programming language solutions to common problems.</description>
     <link>http://elixir-recipes.github.io/</link>
     <atom:link href="http://elixir-recipes.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 01 Apr 2016 01:46:34 +0800</pubDate>
-    <lastBuildDate>Fri, 01 Apr 2016 01:46:34 +0800</lastBuildDate>
+    <pubDate>Fri, 01 Apr 2016 22:18:11 +0800</pubDate>
+    <lastBuildDate>Fri, 01 Apr 2016 22:18:11 +0800</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
+    
+      <item>
+        <title>Spawning processes</title>
+        <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;spawn&lt;/code&gt; creates a new Erlang VM process to run a given module, function, and arguments and returns its process id &lt;code class=&quot;highlighter-rouge&quot;&gt;pid&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Bob&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;] Bob says: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Bob&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;say&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;I&#39;m Bob&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#PID&amp;lt;0.57.0&amp;gt;] Bob says: sup&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spawn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Bob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;I&#39;m Bob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#PID&amp;lt;0.101.0&amp;gt;] Bob says: I&#39;m Bob&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#PID&amp;lt;0.101.0&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check the &lt;code class=&quot;highlighter-rouge&quot;&gt;PID&lt;/code&gt;s that are printed. We’ve just run the &lt;code class=&quot;highlighter-rouge&quot;&gt;Bob.say&lt;/code&gt; function as a separate process.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Additional reading:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://elixir-lang.org/getting-started/processes.html&quot;&gt;Processes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;iex&amp;gt; h Process&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 01 Apr 2016 00:00:00 +0800</pubDate>
+        <link>http://elixir-recipes.github.io/concurrency/spawning-processes/</link>
+        <guid isPermaLink="true">http://elixir-recipes.github.io/concurrency/spawning-processes/</guid>
+        
+        
+        <category>concurrency</category>
+        
+      </item>
     
       <item>
         <title>Logging with Logger</title>
@@ -64,7 +100,6 @@ An example output is the &lt;a href=&quot;http://elixir-lang.org/docs/stable/eli
 &lt;p&gt;&lt;strong&gt;Additional reading:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/elixir-lang/ex_doc&quot;&gt;ex_doc&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
@@ -368,34 +403,6 @@ An example output is the &lt;a href=&quot;http://elixir-lang.org/docs/stable/eli
         <pubDate>Sun, 27 Mar 2016 00:00:00 +0800</pubDate>
         <link>http://elixir-recipes.github.io/functions/guard-clauses/</link>
         <guid isPermaLink="true">http://elixir-recipes.github.io/functions/guard-clauses/</guid>
-        
-        
-        <category>functions</category>
-        
-      </item>
-    
-      <item>
-        <title>Default function parameters</title>
-        <description>&lt;p&gt;Specify default values for your function parameters using &lt;code class=&quot;highlighter-rouge&quot;&gt;\\&lt;/code&gt;:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Bob&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\\&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Hi, I&#39;m Bob!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Bob says: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;	
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Bob&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;say&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Bob says: Hi, I&#39;m Bob!&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Bob&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;say&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Morning!&quot;&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Bob says: Morning!&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Do be careful if you’re using optional parameters when definining functions of the same name but different arity. Since named functions in Elixir are identified by its name and arity, optional parameters can lead to some ambiguity. Elixir will warn you if your function definitions conflict.&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
-        <pubDate>Sun, 27 Mar 2016 00:00:00 +0800</pubDate>
-        <link>http://elixir-recipes.github.io/functions/default-function-parameters/</link>
-        <guid isPermaLink="true">http://elixir-recipes.github.io/functions/default-function-parameters/</guid>
         
         
         <category>functions</category>
