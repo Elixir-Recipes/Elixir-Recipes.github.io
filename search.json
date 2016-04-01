@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Sending and Receiving",
+      "category" : "concurrency",
+      "tags"     : "",
+      "url"      : "/concurrency/sending-and-receiving/",
+      "date"     : "2016-04-02 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Spawning processes",
       "category" : "concurrency",
       "tags"     : "",

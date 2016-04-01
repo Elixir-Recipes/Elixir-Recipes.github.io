@@ -14,7 +14,7 @@
   
 </title>
 <meta name="description" content="A collection of Elixir programming language solutions to common problems.">
-<meta name="keywords" content="processing, spawn, concurrency">
+<meta name="keywords" content="processes, spawn, concurrency">
 <link rel="stylesheet" href="/css/main.css">
 
 
@@ -84,6 +84,10 @@
 <span class="n">iex</span><span class="o">&gt;</span> <span class="n">spawn</span><span class="p">(</span><span class="no">Bob</span><span class="p">,</span> <span class="ss">:say</span><span class="p">,</span> <span class="p">[</span><span class="sd">"</span><span class="s2">I'm Bob"</span><span class="p">])</span>
 <span class="p">[</span><span class="c1">#PID&lt;0.101.0&gt;] Bob says: I'm Bob</span>
 <span class="c1">#PID&lt;0.101.0&gt;</span></code></pre></figure>
+
+<blockquote>
+  <p><code class="highlighter-rouge">self</code> returns the current process’ <code class="highlighter-rouge">pid</code></p>
+</blockquote>
 
 <p>Check the <code class="highlighter-rouge">PID</code>s that are printed. We’ve just run the <code class="highlighter-rouge">Bob.say</code> function as a separate process.</p>
 
