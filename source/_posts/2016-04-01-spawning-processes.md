@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Spawning processes"
-keywords: "processing, spawn, concurrency"
+keywords: "processes, spawn, concurrency"
 category: "concurrency"
 comments: true
 ---
@@ -23,6 +23,8 @@ iex> spawn(Bob, :say, ["I'm Bob"])
 [#PID<0.101.0>] Bob says: I'm Bob
 #PID<0.101.0>
 {% endhighlight %}
+
+> `self` returns the current process' `pid`
 
 Check the `PID`s that are printed. We've just run the `Bob.say` function as a separate process. 
 
