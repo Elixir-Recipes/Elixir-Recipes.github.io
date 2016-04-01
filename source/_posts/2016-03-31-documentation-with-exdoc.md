@@ -26,5 +26,4 @@ An example output is the [official Elixir Docs](http://elixir-lang.org/docs/stab
 
 **Additional reading:**
 
-- []()
 - [ex_doc](https://github.com/elixir-lang/ex_doc)
