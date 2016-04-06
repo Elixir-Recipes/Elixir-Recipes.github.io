@@ -79,11 +79,11 @@
   
   <span class="k">def</span> <span class="n">listen</span> <span class="k">do</span>
     <span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="sd">"</span><span class="s2">[</span><span class="si">#{</span><span class="n">inspect</span> <span class="n">self</span><span class="si">}</span><span class="s2">] is listening"</span>
-  	<span class="k">receive</span> <span class="k">do</span>
-  	  <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">message</span><span class="p">}</span> <span class="o">-&gt;</span>
-<span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="sd">"</span><span class="s2">[</span><span class="si">#{</span><span class="n">inspect</span> <span class="n">self</span><span class="si">}</span><span class="s2">] Received </span><span class="si">#{</span><span class="n">message</span><span class="si">}</span><span class="s2"> from </span><span class="si">#{</span><span class="n">inspect</span> <span class="n">sender</span><span class="si">}</span><span class="s2">"</span>
-  	<span class="k">end</span>
-  	<span class="n">listen</span>
+    <span class="k">receive</span> <span class="k">do</span>
+      <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">message</span><span class="p">}</span> <span class="o">-&gt;</span>
+        <span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="sd">"</span><span class="s2">[</span><span class="si">#{</span><span class="n">inspect</span> <span class="n">self</span><span class="si">}</span><span class="s2">] Received </span><span class="si">#{</span><span class="n">message</span><span class="si">}</span><span class="s2"> from </span><span class="si">#{</span><span class="n">inspect</span> <span class="n">sender</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">end</span>
+    <span class="n">listen</span>
   <span class="k">end</span>
 <span class="k">end</span></code></pre></figure>
 
@@ -104,6 +104,8 @@
 <span class="p">[</span><span class="c1">#PID&lt;0.78.0&gt;] Received Sup jeff from #PID&lt;0.57.0&gt;</span>
 <span class="p">[</span><span class="c1">#PID&lt;0.78.0&gt;] is listening</span>
 <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="c1">#PID&lt;0.57.0&gt;, "Sup jeff"}</span></code></pre></figure>
+
+<p>In the above, <code class="highlighter-rouge">#PID&lt;0.57.0&gt;</code> refers to our current process, and <code class="highlighter-rouge">#PID&lt;0.78.0&gt;</code> refers to the <code class="highlighter-rouge">jeff</code> process.</p>
 
   </div>
 
