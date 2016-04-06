@@ -2,7 +2,7 @@
 layout: post
 title:  "Type Checking"
 keywords: "types, static analysis, type safety"
-category: typespecs
+category: types
 comments: true
 ---
 

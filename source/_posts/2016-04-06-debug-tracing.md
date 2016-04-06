@@ -32,5 +32,6 @@ iex> GenServer.call(pid, :my_command)
 *DBG* <0.77.0> sent %{} to <0.55.0>, new state %{}
 {% endhighlight %}
 
+You can also use `:observer.start` to get access to a wealth of additional information, including all system messages.
 
 
