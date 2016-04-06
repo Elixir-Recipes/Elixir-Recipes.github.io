@@ -10,7 +10,7 @@
 
 <title>
   
-    Debug tracing &middot; Elixir Recipes
+    Custom types &middot; Elixir Recipes
   
 </title>
 <meta name="description" content="A collection of Elixir programming language solutions to common problems.">
@@ -21,7 +21,7 @@
 
 
 
-<link rel="canonical" href="http://elixir-recipes.github.io/concurrency/debug-tracing/">
+<link rel="canonical" href="http://elixir-recipes.github.io/types/custom-types/">
 <link rel="alternate" type="application/rss+xml" title="Elixir Recipes" href="http://elixir-recipes.github.io/feed.xml" />
 
 <!-- Icons -->
@@ -57,7 +57,7 @@
     </a>
 
     
-      <h1 class="post-title">Debug tracing</h1>
+      <h1 class="post-title">Custom types</h1>
       <p class="post-meta">Apr 6, 2016</p>
     
 
@@ -69,30 +69,24 @@
         <section class="main-content">
           <article class="post">
   <div class="post-content container">
-    <p>Use <code class="highlighter-rouge">:sys</code> methods to get more information about your servers. You can use:</p>
+    <p>Use <code class="highlighter-rouge">@type</code> to define custom types. For example, we can imagine definining types in an API client:</p>
+
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="nv">@type</span> <span class="n">body</span>           <span class="p">::</span> <span class="n">any</span>
+<span class="nv">@type</span> <span class="n">status_code</span>    <span class="p">::</span> <span class="n">integer</span>
+<span class="nv">@type</span> <span class="n">request_method</span> <span class="p">::</span> <span class="ss">:get</span> <span class="o">|</span> <span class="ss">:put</span> <span class="o">|</span> <span class="ss">:post</span> <span class="o">|</span> <span class="ss">:delete</span> <span class="o">|</span> <span class="ss">:put</span> <span class="o">|</span> <span class="ss">:patch</span> <span class="o">|</span> <span class="ss">:head</span>
+<span class="nv">@type</span> <span class="n">header</span>         <span class="p">::</span> <span class="p">{</span> <span class="n">binary</span><span class="p">,</span> <span class="n">binary</span> <span class="p">}</span>
+<span class="nv">@type</span> <span class="n">response</span>       <span class="p">::</span> <span class="p">{</span> <span class="n">status_code</span><span class="p">,</span> <span class="n">any</span><span class="p">,</span> <span class="p">[</span><span class="n">header</span><span class="p">]</span> <span class="p">}</span>
+<span class="nv">@type</span> <span class="n">payload</span>        <span class="p">::</span> <span class="p">%</span><span class="no">Payload</span><span class="p">{</span> <span class="ss">method:</span> <span class="n">request_method</span><span class="p">,</span> <span class="ss">id:</span> <span class="n">binary</span><span class="p">,</span> <span class="ss">size:</span> <span class="n">integer</span> <span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p>You can use custom types in the definition of types, such as how the above <code class="highlighter-rouge">header</code> type is used in <code class="highlighter-rouge">response</code>.</p>
+</blockquote>
+
+<p><strong>Additional reading:</strong></p>
 
 <ul>
-  <li><code class="highlighter-rouge">:sys.trace</code></li>
-  <li><code class="highlighter-rouge">:sys.get_status</code></li>
-  <li><code class="highlighter-rouge">:sys.statistics</code></li>
+  <li><a href="http://elixir-lang.org/docs/stable/elixir/typespecs.html#defining-a-type">Defining a type</a></li>
 </ul>
-
-<p>Optionally, you can turn on debug mode by specifying the <code class="highlighter-rouge">debug</code> parameter in a <code class="highlighter-rouge">GenServer</code> <code class="highlighter-rouge">start_link</code> call:</p>
-
-<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">iex</span><span class="o">&gt;</span> <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">pid</span><span class="p">}</span> <span class="o">=</span> <span class="no">GenServer</span><span class="o">.</span><span class="n">start_link</span><span class="p">(</span><span class="no">MyModule</span><span class="o">.</span><span class="no">Server</span><span class="p">,</span> <span class="p">%{},</span> <span class="p">[</span><span class="ss">debug:</span> <span class="p">[</span><span class="ss">:statistics</span><span class="p">,</span> <span class="ss">:trace</span><span class="p">]])</span></code></pre></figure>
-
-<p>You can also enable tracing on an existing server using:</p>
-
-<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">iex</span><span class="o">&gt;</span> <span class="ss">:sys</span><span class="o">.</span><span class="n">trace</span> <span class="n">pid</span><span class="p">,</span> <span class="no">true</span></code></pre></figure>
-
-<p>With debug turned on, you get a trace of messages:</p>
-
-<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">iex</span><span class="o">&gt;</span> <span class="no">GenServer</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="ss">:my_command</span><span class="p">)</span>
-<span class="o">*</span><span class="no">DBG</span><span class="o">*</span> <span class="o">&lt;</span><span class="m">0.77</span><span class="o">.</span><span class="m">0</span><span class="o">&gt;</span> <span class="n">got</span> <span class="n">call</span> <span class="ss">:my_command</span> <span class="n">from</span><span class="o">&lt;</span><span class="m">0.55</span><span class="o">.</span><span class="m">0</span><span class="o">&gt;</span>
-<span class="o">*</span><span class="no">DBG</span><span class="o">*</span> <span class="o">&lt;</span><span class="m">0.77</span><span class="o">.</span><span class="m">0</span><span class="o">&gt;</span> <span class="n">sent</span> <span class="p">%{}</span> <span class="n">to</span> <span class="o">&lt;</span><span class="m">0.55</span><span class="o">.</span><span class="m">0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">new</span> <span class="n">state</span> <span class="p">%{}</span></code></pre></figure>
-
-<p>You can also use <code class="highlighter-rouge">:observer.start</code> to get access to a wealth of additional information, including all system messages.</p>
-
 
   </div>
 
@@ -101,12 +95,12 @@
 
       <span>Share this: </span>
 
-      <a href="http://twitter.com/share?text=Debug tracing&amp;url=http://elixir-recipes.github.io/concurrency/debug-tracing/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
+      <a href="http://twitter.com/share?text=Custom types&amp;url=http://elixir-recipes.github.io/types/custom-types/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <i class="icon icon-twitter-rounded"></i>
       </a>
 
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://elixir-recipes.github.io/concurrency/debug-tracing/"
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://elixir-recipes.github.io/types/custom-types/"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <i class="icon icon-facebook-rounded"></i>
       </a>
@@ -125,8 +119,8 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'yosriady';
-      var disqus_identifier = '/concurrency/debug-tracing';
-      var disqus_title = 'Debug tracing';
+      var disqus_identifier = '/types/custom-types';
+      var disqus_title = 'Custom types';
       var disqus_url = 'http://elixir-recipes.github.io';
       /*var disqus_developer = 1;*/
 

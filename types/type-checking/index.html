@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="REvSdOuXsnRcvRVGXVhLRG_6ZFcu3tMz9POkG0Uy1g4" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
-<meta name="theme-color" content="#2ecc71">
 
 <title>
   
@@ -58,7 +58,7 @@
 
     
       <h1 class="post-title">Type Checking</h1>
-      <p class="post-meta">Mar 25, 2015</p>
+      <p class="post-meta">Mar 25, 2016</p>
     
 
   </div>
@@ -69,12 +69,72 @@
         <section class="main-content">
           <article class="post">
   <div class="post-content container">
-    <p>You can perform string substitution using <code class="highlighter-rouge">#{}</code></p>
+    <p>While Elixir is dynamically typed, we can supply optional <a href="http://elixir-lang.org/docs/stable/elixir/typespecs.html"><code class="highlighter-rouge">typespecs</code></a> to make sure
+our programs are <a href="https://en.wikipedia.org/wiki/Type_safety">type-safe</a>.
+Preventing type errors ensures that there’s no discrepancy between differing types of our program’s constants,
+variables, and functions. <code class="highlighter-rouge">Typespecs</code> are also useful as documentation.</p>
 
-<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">iex</span><span class="o">&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="sd">"</span><span class="s2">José"</span>
-<span class="n">iex</span><span class="o">&gt;</span> <span class="no">IO</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="sd">"</span><span class="s2">Hello, </span><span class="si">#{</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span><span class="p">)</span>
-<span class="no">Hello</span><span class="p">,</span> <span class="n">Jos</span><span class="err">é</span><span class="n">!</span>
-<span class="ss">:ok</span></code></pre></figure>
+<p>Here’s a simple example:</p>
+
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defmodule</span> <span class="no">Bob</span> <span class="k">do</span>
+  <span class="nv">@spec</span> <span class="n">say</span><span class="p">(</span><span class="no">String</span><span class="o">.</span><span class="n">t</span><span class="p">)</span> <span class="p">::</span> <span class="no">String</span><span class="o">.</span><span class="n">t</span>
+  <span class="k">def</span> <span class="n">say</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="k">do</span>
+    <span class="sd">"</span><span class="s2">Bob says: </span><span class="si">#{</span><span class="n">message</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>We use <code class="highlighter-rouge">@spec</code> to specify the type of the input and its return value in the
+following format:</p>
+
+<p><code class="highlighter-rouge">@spec &lt;method name&gt;(&lt;type of parameter&gt;) :: &lt;type of return value&gt;</code></p>
+
+<p>In the example above, our method <code class="highlighter-rouge">say</code> takes in a <code class="highlighter-rouge">string</code> and returns a <code class="highlighter-rouge">string</code>.</p>
+
+<blockquote>
+  <p>Elixir provides many <a href="http://elixir-lang.org/docs/stable/elixir/typespecs.html#types-and-their-syntax">built-in types</a>. You can also declare your own custom domain-specific types that can then be re-used in other modules.</p>
+</blockquote>
+
+<p>What happens if the implementation doesn’t match the spec? Let’s modify our code:</p>
+
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defmodule</span> <span class="no">Bob</span> <span class="k">do</span>
+  <span class="nv">@spec</span> <span class="n">say</span><span class="p">(</span><span class="no">String</span><span class="o">.</span><span class="n">t</span><span class="p">)</span> <span class="p">::</span> <span class="no">String</span><span class="o">.</span><span class="n">t</span>
+  <span class="k">def</span> <span class="n">say</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="k">do</span>
+    <span class="sd">"</span><span class="s2">Bob says: </span><span class="si">#{</span><span class="n">message</span><span class="si">}</span><span class="s2">"</span>
+    <span class="m">123</span> <span class="c1"># The return type is now integer instead of String</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Typespecs are not used by the compiler, so if you compile and run this code,
+you’ll receive no warnings and the code will run. To perform type checking,
+we use <a href="http://erlang.org/doc/man/dialyzer.html"><code class="highlighter-rouge">Dialyzer</code></a>.</p>
+
+<blockquote>
+  <p>You can set up Dialyzer by installing <a href="https://github.com/jeremyjh/dialyxir">dialyxir</a> globally,
+and using the generated <code class="highlighter-rouge">plt</code> as your default <code class="highlighter-rouge">dialyzer_plt</code>.</p>
+</blockquote>
+
+<p>Let’s perform some type checking:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>elixirc bob.exs <span class="c"># Compiles to Elixir.Bob.beam</span>
+<span class="gp">$ </span>dialyzer Elixir.Bob.beam
+  Checking whether the PLT /Users/yosriady/.dialyzer_plt is up-to-date... yes
+  Proceeding with analysis...
+typespecs.exs:2: Invalid <span class="nb">type </span>specification <span class="k">for function</span> <span class="s1">'Elixir.Bob'</span>:say/1. The success typing is <span class="o">(</span>_<span class="o">)</span> -&gt; 123
+ <span class="k">done in </span>0m1.03s
+<span class="k">done</span> <span class="o">(</span>warnings were emitted<span class="o">)</span></code></pre></figure>
+
+<p>Nice! <code class="highlighter-rouge">Dialyzer</code> caught our type error. We can fix it and check again:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>elixirc bob.exs
+<span class="gp">$ </span>dialyzer Elixir.Bob.beam
+  Checking whether the PLT /Users/yosriady/.dialyzer_plt is up-to-date... yes
+  Proceeding with analysis... <span class="k">done in </span>0m0.93s
+<span class="k">done</span> <span class="o">(</span>passed successfully<span class="o">)</span></code></pre></figure>
+
+<p>In production, we can run <a href="https://github.com/jeremyjh/dialyxir">dialyxir</a> on our project directory,
+which handles automatic compilation of our Elixir code. We can also set up git hooks to ensure that
+all type violations are fixed prior to making/pushing commits and reap the full benefits of
+static analysis.</p>
 
 <p><strong>Additional reading:</strong></p>
 

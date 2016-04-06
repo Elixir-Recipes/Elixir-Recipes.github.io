@@ -9,6 +9,14 @@
     } ,
   
     {
+      "title"    : "Custom types",
+      "category" : "types",
+      "tags"     : "",
+      "url"      : "/types/custom-types/",
+      "date"     : "2016-04-06 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Sending and Receiving",
       "category" : "concurrency",
       "tags"     : "",
@@ -162,9 +170,9 @@
   
     {
       "title"    : "Type Checking",
-      "category" : "typespecs",
+      "category" : "types",
       "tags"     : "",
-      "url"      : "/typespecs/type-checking/",
+      "url"      : "/types/type-checking/",
       "date"     : "2016-03-25 00:00:00 +0800"
     } ,
   

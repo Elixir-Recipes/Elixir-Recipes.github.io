@@ -5,6 +5,10 @@
 <lastmod>2016-04-06T00:00:00+08:00</lastmod>
 </url>
 <url>
+<loc>http://elixir-recipes.github.io/types/custom-types/</loc>
+<lastmod>2016-04-06T00:00:00+08:00</lastmod>
+</url>
+<url>
 <loc>http://elixir-recipes.github.io/concurrency/sending-and-receiving/</loc>
 <lastmod>2016-04-02T00:00:00+08:00</lastmod>
 </url>
@@ -81,7 +85,7 @@
 <lastmod>2016-03-26T00:00:00+08:00</lastmod>
 </url>
 <url>
-<loc>http://elixir-recipes.github.io/typespecs/type-checking/</loc>
+<loc>http://elixir-recipes.github.io/types/type-checking/</loc>
 <lastmod>2016-03-25T00:00:00+08:00</lastmod>
 </url>
 <url>
