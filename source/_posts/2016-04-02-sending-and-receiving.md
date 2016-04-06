@@ -17,11 +17,11 @@ defmodule Person do
   
   def listen do
     IO.puts "[#{inspect self}] is listening"
-  	receive do
-  	  {:ok, sender, message} ->
-IO.puts "[#{inspect self}] Received #{message} from #{inspect sender}"
-  	end
-  	listen
+    receive do
+      {:ok, sender, message} ->
+        IO.puts "[#{inspect self}] Received #{message} from #{inspect sender}"
+    end
+    listen
   end
 end
 {% endhighlight %}
@@ -45,3 +45,5 @@ iex(3)> Person.tell(jeff, "Sup jeff")
 {:ok, #PID<0.57.0>, "Sup jeff"}
 
 {% endhighlight %}
+
+In the above, `#PID<0.57.0>` refers to our current process, and `#PID<0.78.0>` refers to the `jeff` process.
