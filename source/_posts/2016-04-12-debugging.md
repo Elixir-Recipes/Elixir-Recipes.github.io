@@ -6,7 +6,7 @@ category: "iex"
 comments: true
 ---
 
-Use 'IEx.pry' lets you block an operation and access its bindings. Unlike `pdb` and `pry` in Ruby, it's not a full-fledged debugger but it's a quick way to look into your execution.
+Using 'IEx.pry' lets you block an operation and access its bindings. Unlike `pdb` and `pry` in Ruby, it's not a full-fledged debugger but it's a quick way to look into your execution.
 
 {% highlight elixir %}
 require IEX; # First, require the IEx module
