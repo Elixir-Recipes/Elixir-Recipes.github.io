@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Debugging",
+      "category" : "iex",
+      "tags"     : "",
+      "url"      : "/iex/debugging/",
+      "date"     : "2016-04-12 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Debug tracing",
       "category" : "concurrency",
       "tags"     : "",
