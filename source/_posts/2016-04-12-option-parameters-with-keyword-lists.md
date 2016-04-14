@@ -27,7 +27,7 @@ iex> myfunc("hello", [pizza: true, soda: false])
 
 The argument values are available as `opts.pizza` and `opts.soda` respectively.
 
-A real-life usage of this pattern is in [Ecto]'s(https://hexdocs.pm/ecto/Ecto.Query.html#from/2) query language:
+[Ecto](https://hexdocs.pm/ecto/Ecto.Query.html#from/2)'s query language uses this pattern:
 
 {% highlight elixir %}
 query = from p in EctoBlog.Post, where: p.id == post_id
