@@ -30,4 +30,6 @@ defmodule JSONParser do
 end
 {% endhighlight %}
 
-> Missing behaviour functions in implementation will result in `undefined behaviour function` compilation errors.
+The `@behaviour` module attribute above indicates that this module is expected to define every function defined in the `Parser` module. Missing functions will result in `undefined behaviour function` compilation errors.
+
+Modules can have multiple `@behaviour` attributes. 
