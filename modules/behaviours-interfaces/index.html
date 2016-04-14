@@ -10,22 +10,18 @@
 
 <title>
   
-    Home &middot; Elixir Recipes
+    Behaviours &middot; Elixir Recipes
   
 </title>
 <meta name="description" content="A collection of Elixir programming language solutions to common problems.">
-<meta name="keywords" content="Elixir, language, solutions, patterns, recipes, cookbook">
+<meta name="keywords" content="behaviours, modules">
 <link rel="stylesheet" href="/css/main.css">
 
 
-  <link rel="prev" href="http://elixir-recipes.github.io/">
 
 
 
-  <link rel="next" href="http://elixir-recipes.github.io/page/3">
-
-
-<link rel="canonical" href="http://elixir-recipes.github.io/page/2/">
+<link rel="canonical" href="http://elixir-recipes.github.io/modules/behaviours-interfaces/">
 <link rel="alternate" type="application/rss+xml" title="Elixir Recipes" href="http://elixir-recipes.github.io/feed.xml" />
 
 <!-- Icons -->
@@ -33,7 +29,7 @@
 <link rel="icon" href="/images/favicon.ico">
 <script>base_url = "";</script>
   </head>
-  <body class="home">
+  <body class="">
 
     <main class="main-container">
 
@@ -61,14 +57,8 @@
     </a>
 
     
-      <h1>Elixir Recipes</h1>
-      <div class="search">
-  <i class="icon icon-search"></i>
-  <input type="text" id="search-input" class="input" placeholder="type to search...">
-  <ul id="results-container" class="dropdown"></ul>
-</div>
-
-      <small class='text-center'><a class="recipes-link" href="/archive">View recipes by category</a></small>
+      <h1 class="post-title">Behaviours</h1>
+      <p class="post-meta">Apr 12, 2016</p>
     
 
   </div>
@@ -77,83 +67,60 @@
 
 
         <section class="main-content">
-          <section class="posts txt-center container">
+          <article class="post">
+  <div class="post-content container">
+    <p><strong>Behaviours</strong> are a list of functions specifications that another module can implement. They are similar to <em>interfaces</em>.</p>
 
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/concurrency/sending-and-receiving/" title="Permalink to: Sending and Receiving">Sending and Receiving</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-04-02">Submitted Apr 2, 2016 in <strong>concurrency</strong></time>
-        </span>
-      
-    </article>
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/concurrency/spawning-processes/" title="Permalink to: Spawning processes">Spawning processes</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-04-01">Submitted Apr 1, 2016 in <strong>concurrency</strong></time>
-        </span>
-      
-    </article>
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/logging/logging-with-logger/" title="Permalink to: Logging with Logger">Logging with Logger</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-03-31">Submitted Mar 31, 2016 in <strong>logging</strong></time>
-        </span>
-      
-    </article>
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/documentation/documentation-with-exdoc/" title="Permalink to: Documentation with ExDoc">Documentation with ExDoc</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-03-31">Submitted Mar 31, 2016 in <strong>documentation</strong></time>
-        </span>
-      
-    </article>
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/testing/doctests/" title="Permalink to: Doctests">Doctests</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-03-31">Submitted Mar 31, 2016 in <strong>testing</strong></time>
-        </span>
-      
-    </article>
-  
 
-  <nav class="pagination" role="pagination">
-    <ul>
-      
-        
-          <li><a class="next" href="/" title="Articles new">&laquo; Prev</a></li>
-        
-      
+  </div>
 
-      <li><span class="page-number">Page 2 of 6</span></li>
+  <div class="container">
+    <aside class="share">
 
-      
-        <li><a class="prev" href="/page/3/" title="Articles old">Next &raquo;</a></li>
-      
-    </ul>
-  </nav>
+      <span>Share this: </span>
 
-</section>
+      <a href="http://twitter.com/share?text=Behaviours&amp;url=http://elixir-recipes.github.io/modules/behaviours-interfaces/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="icon icon-twitter-rounded"></i>
+      </a>
 
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://elixir-recipes.github.io/modules/behaviours-interfaces/"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <i class="icon icon-facebook-rounded"></i>
+      </a>
+    </aside>
+  </div>
+</article>
+
+
+<hr>
+
+<aside id="comments" class="disqus">
+
+  <div class="container">
+    <h3><i class="icon icon-comments-o"></i> Comments</h3>
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+      var disqus_shortname = 'yosriady';
+      var disqus_identifier = '/modules/behaviours-interfaces';
+      var disqus_title = 'Behaviours';
+      var disqus_url = 'http://elixir-recipes.github.io';
+      /*var disqus_developer = 1;*/
+
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+
+    <noscript>
+      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+</aside>
 
         </section>
 

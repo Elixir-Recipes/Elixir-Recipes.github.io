@@ -5,8 +5,8 @@
     <description>A collection of Elixir programming language solutions to common problems.</description>
     <link>http://elixir-recipes.github.io/</link>
     <atom:link href="http://elixir-recipes.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 12 Apr 2016 16:48:26 +0800</pubDate>
-    <lastBuildDate>Tue, 12 Apr 2016 16:48:26 +0800</lastBuildDate>
+    <pubDate>Thu, 14 Apr 2016 20:16:28 +0800</pubDate>
+    <lastBuildDate>Thu, 14 Apr 2016 20:16:28 +0800</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
       <item>
@@ -27,7 +27,7 @@
 
 &lt;p&gt;The argument values are available as &lt;code class=&quot;highlighter-rouge&quot;&gt;opts.pizza&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;opts.soda&lt;/code&gt; respectively.&lt;/p&gt;
 
-&lt;p&gt;A real-life usage of this pattern is in [Ecto]’s(https://hexdocs.pm/ecto/Ecto.Query.html#from/2) query language:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://hexdocs.pm/ecto/Ecto.Query.html#from/2&quot;&gt;Ecto&lt;/a&gt;’s query language uses this pattern:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;EctoBlog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;where:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post_id&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -85,6 +85,43 @@
         
         
         <category>iex</category>
+        
+      </item>
+    
+      <item>
+        <title>Behaviours</title>
+        <description>&lt;p&gt;&lt;strong&gt;Behaviours&lt;/strong&gt; are a list of functions specifications that another module can implement. They are similar to  interfaces in other languages.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If you’ve used the &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; keyword when writing GenServers or in the Phoenix framework, you’ve already used behaviours.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Here’s an example behaviour:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Parser&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;@callback&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;any&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;@callback&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extensions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And a module that implements it:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSONParser&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;@behaviour&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Parser&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# ... parse JSON&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extensions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Missing behaviour functions in implementation will result in &lt;code class=&quot;highlighter-rouge&quot;&gt;undefined behaviour function&lt;/code&gt; compilation errors.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Sun, 10 Apr 2016 00:00:00 +0800</pubDate>
+        <link>http://elixir-recipes.github.io/modules/behaviours/</link>
+        <guid isPermaLink="true">http://elixir-recipes.github.io/modules/behaviours/</guid>
+        
+        
+        <category>modules</category>
         
       </item>
     
@@ -354,37 +391,6 @@ An example output is the &lt;a href=&quot;http://elixir-lang.org/docs/stable/eli
         
         
         <category>testing</category>
-        
-      </item>
-    
-      <item>
-        <title>Project configuration</title>
-        <description>&lt;p&gt;For projects generated with &lt;code class=&quot;highlighter-rouge&quot;&gt;Mix&lt;/code&gt;, you can specify configuration variables in &lt;code class=&quot;highlighter-rouge&quot;&gt;config/config.exs&lt;/code&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Mix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Config&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:redis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;redis_url:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;https://google.com&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;In your code, you can retrieve this value like so:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:redis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:redis_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;If you have environment specific config files, use &lt;code class=&quot;highlighter-rouge&quot;&gt;Mix.env&lt;/code&gt;:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Mix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Config&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;import_config&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Mix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.exs&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;strong&gt;Additional reading:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://elixir-lang.org/docs/stable/mix/Mix.Config.html&quot;&gt;Mix.Config&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 30 Mar 2016 00:00:00 +0800</pubDate>
-        <link>http://elixir-recipes.github.io/mix/project-configuration/</link>
-        <guid isPermaLink="true">http://elixir-recipes.github.io/mix/project-configuration/</guid>
-        
-        
-        <category>mix</category>
         
       </item>
     
