@@ -91,9 +91,9 @@
   <span class="k">def</span> <span class="n">extensions</span><span class="p">,</span> <span class="k">do</span><span class="p">:</span> <span class="p">[</span><span class="sd">"</span><span class="s2">json"</span><span class="p">]</span>
 <span class="k">end</span></code></pre></figure>
 
-<blockquote>
-  <p>Missing behaviour functions in implementation will result in <code class="highlighter-rouge">undefined behaviour function</code> compilation errors.</p>
-</blockquote>
+<p>The <code class="highlighter-rouge">@behaviour</code> module attribute above indicates that this module is expected to define every function defined in the <code class="highlighter-rouge">Parser</code> module. Missing functions will result in <code class="highlighter-rouge">undefined behaviour function</code> compilation errors.</p>
+
+<p>Modules can have multiple <code class="highlighter-rouge">@behaviour</code> attributes.</p>
 
   </div>
 
