@@ -69,7 +69,7 @@
         <section class="main-content">
           <article class="post">
   <div class="post-content container">
-    <p><strong>Procotols</strong> enable polymorphism in Elixir. Define protocols with <code class="highlighter-rouge">defprotocol</code>:</p>
+    <p><strong>Protocols</strong> enable polymorphism in Elixir. Define protocols with <code class="highlighter-rouge">defprotocol</code>:</p>
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defprotocol</span> <span class="no">Log</span> <span class="k">do</span>
   <span class="k">def</span> <span class="n">log</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
@@ -103,7 +103,13 @@
 <span class="n">iex</span><span class="o">&gt;</span> <span class="no">Log</span><span class="o">.</span><span class="n">log</span><span class="p">(%</span><span class="no">Post</span><span class="p">{</span><span class="ss">title:</span> <span class="sd">"</span><span class="s2">Protocols"</span><span class="p">,</span> <span class="ss">category:</span> <span class="sd">"</span><span class="s2">Protocols"</span><span class="p">})</span>
 <span class="m">22</span><span class="p">:</span><span class="m">53</span><span class="p">:</span><span class="m">43.604</span> <span class="p">[</span><span class="n">info</span><span class="p">]</span>  <span class="ss">Post:</span> <span class="no">Protocols</span><span class="p">,</span> <span class="no">Protocols</span></code></pre></figure>
 
-<p>Protocols let you dispatch to any data type, so long as it implements the protocol.</p>
+<p>Protocols let you dispatch to any data type, so long as it implements the protocol. This includes some built-in types such as <code class="highlighter-rouge">Atom</code>, <code class="highlighter-rouge">BitString</code>, <code class="highlighter-rouge">Tuples</code>, and others.</p>
+
+<p><strong>Additional reading:</strong></p>
+
+<ul>
+  <li><a href="elixir-lang.org/getting-started/protocols.html">Protocols</a></li>
+</ul>
 
   </div>
 

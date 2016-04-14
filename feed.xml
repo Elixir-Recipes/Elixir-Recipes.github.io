@@ -5,13 +5,13 @@
     <description>A collection of Elixir programming language solutions to common problems.</description>
     <link>http://elixir-recipes.github.io/</link>
     <atom:link href="http://elixir-recipes.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Apr 2016 23:07:05 +0800</pubDate>
-    <lastBuildDate>Thu, 14 Apr 2016 23:07:05 +0800</lastBuildDate>
+    <pubDate>Thu, 14 Apr 2016 23:29:49 +0800</pubDate>
+    <lastBuildDate>Thu, 14 Apr 2016 23:29:49 +0800</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
       <item>
         <title>Protocols</title>
-        <description>&lt;p&gt;&lt;strong&gt;Procotols&lt;/strong&gt; enable polymorphism in Elixir. Define protocols with &lt;code class=&quot;highlighter-rouge&quot;&gt;defprotocol&lt;/code&gt;:&lt;/p&gt;
+        <description>&lt;p&gt;&lt;strong&gt;Protocols&lt;/strong&gt; enable polymorphism in Elixir. Define protocols with &lt;code class=&quot;highlighter-rouge&quot;&gt;defprotocol&lt;/code&gt;:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defprotocol&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Log&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -45,7 +45,13 @@
 &lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(%&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;title:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Protocols&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;category:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Protocols&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
 &lt;span class=&quot;m&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;53&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;43.604&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;ss&quot;&gt;Post:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Protocols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Protocols&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Protocols let you dispatch to any data type, so long as it implements the protocol.&lt;/p&gt;
+&lt;p&gt;Protocols let you dispatch to any data type, so long as it implements the protocol. This includes some built-in types such as &lt;code class=&quot;highlighter-rouge&quot;&gt;Atom&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;BitString&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Tuples&lt;/code&gt;, and others.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Additional reading:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;elixir-lang.org/getting-started/protocols.html&quot;&gt;Protocols&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Thu, 14 Apr 2016 00:00:00 +0800</pubDate>
         <link>http://elixir-recipes.github.io/protocols/protocols/</link>
