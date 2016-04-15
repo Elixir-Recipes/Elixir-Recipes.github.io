@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Macros",
+      "category" : "metaprogramming",
+      "tags"     : "",
+      "url"      : "/metaprogramming/macros/",
+      "date"     : "2016-04-15 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Protocols",
       "category" : "protocols",
       "tags"     : "",
