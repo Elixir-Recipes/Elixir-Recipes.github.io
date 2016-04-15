@@ -69,7 +69,11 @@
         <section class="main-content">
           <article class="post">
   <div class="post-content container">
-    <p>Macros in Elixir lets you perform <a href="http://www.scheme.com/tspl3/syntax.html">syntactic extensions</a>, which are expanded to before a program executes.</p>
+    <p>An Elixir program can be represented by its own data structures as a nested (abstract syntax) tree of tuples with three elements. For example, the function call <code class="highlighter-rouge">run(1, 2, 3)</code> is represented internally as:</p>
+
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="p">{</span><span class="ss">:run</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">]}</span></code></pre></figure>
+
+<p><strong>Macros</strong> in Elixir lets you perform <a href="http://www.scheme.com/tspl3/syntax.html">syntactic extensions</a>, which are expanded to before a program executes. We use macros to transform our internal program structure by treating code as data, and thus <a href="https://en.wikipedia.org/wiki/Metaprogramming">metaprogram</a>.</p>
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defmodule</span> <span class="no">MyModule</span> <span class="k">do</span>
   <span class="k">defmacro</span> <span class="n">macro</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="k">do</span>

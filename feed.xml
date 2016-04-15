@@ -5,13 +5,17 @@
     <description>A collection of Elixir programming language solutions to common problems.</description>
     <link>http://elixir-recipes.github.io/</link>
     <atom:link href="http://elixir-recipes.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 16 Apr 2016 00:54:36 +0800</pubDate>
-    <lastBuildDate>Sat, 16 Apr 2016 00:54:36 +0800</lastBuildDate>
+    <pubDate>Sat, 16 Apr 2016 03:29:37 +0800</pubDate>
+    <lastBuildDate>Sat, 16 Apr 2016 03:29:37 +0800</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
       <item>
         <title>Macros</title>
-        <description>&lt;p&gt;Macros in Elixir lets you perform &lt;a href=&quot;http://www.scheme.com/tspl3/syntax.html&quot;&gt;syntactic extensions&lt;/a&gt;, which are expanded to before a program executes.&lt;/p&gt;
+        <description>&lt;p&gt;An Elixir program can be represented by its own data structures as a nested (abstract syntax) tree of tuples with three elements. For example, the function call &lt;code class=&quot;highlighter-rouge&quot;&gt;run(1, 2, 3)&lt;/code&gt; is represented internally as:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;Macros&lt;/strong&gt; in Elixir lets you perform &lt;a href=&quot;http://www.scheme.com/tspl3/syntax.html&quot;&gt;syntactic extensions&lt;/a&gt;, which are expanded to before a program executes. We use macros to transform our internal program structure by treating code as data, and thus &lt;a href=&quot;https://en.wikipedia.org/wiki/Metaprogramming&quot;&gt;metaprogram&lt;/a&gt;.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyModule&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;defmacro&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;macro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
