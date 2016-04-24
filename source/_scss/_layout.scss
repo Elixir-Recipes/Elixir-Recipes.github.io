@@ -326,6 +326,11 @@ $sliding-panel-background-focus: lighten($sliding-panel-background, 5%);
   .post-content a {
     border-bottom: 1px dashed #90A3B6;
   }
+
+  .post-content h2 {
+    margin-bottom: 0.5em;
+    margin-top: 2em;
+  }
 }
 
 .post-title {

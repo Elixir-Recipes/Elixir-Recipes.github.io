@@ -47,7 +47,10 @@ iex> Log.log(%Post{title: "Protocols", category: "Protocols"})
 
 Protocols let you dispatch to any data type, so long as it implements the protocol. This includes some built-in types such as `Atom`, `BitString`, `Tuples`, and others.
 
-You can find a real life example of protocols in the [Poison Encoders](https://github.com/devinus/poison#encoder), which allow developers to implement `Encoders` for their own structs for serializing them to JSON.
+
+## Other Examples
+
+[Poison](https://github.com/devinus/poison#encoder) allows developers to implement `Encoders` for their own structs for serializing them to JSON, by implementing the `Poison.Encoder` protocol.
 
 {% highlight elixir %}
 defimpl Poison.Encoder, for: Person do
