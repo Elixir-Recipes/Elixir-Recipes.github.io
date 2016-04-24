@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Mixins",
+      "category" : "modules",
+      "tags"     : "",
+      "url"      : "/modules/mixins/",
+      "date"     : "2016-04-24 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Macros",
       "category" : "metaprogramming",
       "tags"     : "",

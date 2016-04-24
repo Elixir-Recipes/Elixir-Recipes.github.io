@@ -75,6 +75,8 @@
 
 <p><strong>Macros</strong> in Elixir lets you perform <a href="http://www.scheme.com/tspl3/syntax.html">syntactic extensions</a>, which are expanded to before a program executes. We use macros to transform our internal program structure by treating code as data, and thus <a href="https://en.wikipedia.org/wiki/Metaprogramming">metaprogram</a>.</p>
 
+<h2 id="example">Example</h2>
+
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defmodule</span> <span class="no">MyModule</span> <span class="k">do</span>
   <span class="k">defmacro</span> <span class="n">macro</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="k">do</span>
     <span class="no">IO</span><span class="o">.</span><span class="n">inspect</span> <span class="n">code</span>
@@ -82,7 +84,9 @@
   <span class="k">end</span>
 <span class="k">end</span></code></pre></figure>
 
-<p>Let’s try calling our function:</p>
+<p>We defined a macro with <code class="highlighter-rouge">defmacro</code>, and take in a block of code as arguments. Macros in Elixir transforms the block of <code class="highlighter-rouge">code</code> into its internal Abstract Syntax Tree (AST) representation, which is a nested tree of triples (3-size tuples.) When the macro <code class="highlighter-rouge">macro</code> returns <code class="highlighter-rouge">code</code>, that internal representation is injected back into the global program’s compile tree. In the above example, we just return it unmodified.</p>
+
+<p>Let’s call our macro:</p>
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">iex</span><span class="o">&gt;</span> <span class="kn">require</span> <span class="no">MyModule</span>
 <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyModule</span><span class="o">.</span><span class="n">macro</span><span class="p">((</span><span class="m">1</span><span class="o">+</span><span class="m">2</span><span class="p">)</span><span class="o">*</span> <span class="m">3</span><span class="p">)</span>
@@ -90,8 +94,6 @@
 <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyModule</span><span class="o">.</span><span class="n">macro</span><span class="p">(</span><span class="no">IO</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="sd">"</span><span class="s2">Sup"</span><span class="p">))</span>
 <span class="p">{</span> <span class="p">{:</span><span class="o">.</span><span class="p">,</span> <span class="p">[</span><span class="ss">line:</span> <span class="m">4</span><span class="p">],</span> <span class="p">[{</span><span class="ss">:__aliases__</span><span class="p">,</span> <span class="p">[</span><span class="ss">counter:</span> <span class="m">0</span><span class="p">,</span> <span class="ss">line:</span> <span class="m">4</span><span class="p">],</span> <span class="p">[</span><span class="ss">:IO</span><span class="p">]},</span> <span class="ss">:puts</span><span class="p">]},</span>
  <span class="p">[</span><span class="ss">line:</span> <span class="m">4</span><span class="p">],</span> <span class="p">[</span><span class="sd">"</span><span class="s2">Sup"</span><span class="p">]</span> <span class="p">}</span></code></pre></figure>
-
-<p>In the snippet above, we defined a macro with <code class="highlighter-rouge">defmacro</code>, and take in a block of code as arguments. Macros in Elixir transforms the block of <code class="highlighter-rouge">code</code> into its internal Abstract Syntax Tree (AST) representation, which is a nested tree of triples (3-size tuples.) When the macro <code class="highlighter-rouge">macro</code> returns <code class="highlighter-rouge">code</code>, that internal representation is injected back into the global program’s compile tree. In the above example, we just return it unmodified.</p>
 
 <p>What’s most useful here is that we can modify that internal representation before returning, transforming it into a completely different piece of code.</p>
 

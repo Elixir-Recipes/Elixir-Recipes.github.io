@@ -105,7 +105,9 @@
 
 <p>Protocols let you dispatch to any data type, so long as it implements the protocol. This includes some built-in types such as <code class="highlighter-rouge">Atom</code>, <code class="highlighter-rouge">BitString</code>, <code class="highlighter-rouge">Tuples</code>, and others.</p>
 
-<p>You can find a real life example of protocols in the <a href="https://github.com/devinus/poison#encoder">Poison Encoders</a>, which allow developers to implement <code class="highlighter-rouge">Encoders</code> for their own structs for serializing them to JSON.</p>
+<h2 id="other-examples">Other Examples</h2>
+
+<p><a href="https://github.com/devinus/poison#encoder">Poison</a> allows developers to implement <code class="highlighter-rouge">Encoders</code> for their own structs for serializing them to JSON, by implementing the <code class="highlighter-rouge">Poison.Encoder</code> protocol.</p>
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defimpl</span> <span class="no">Poison</span><span class="o">.</span><span class="no">Encoder</span><span class="p">,</span> <span class="ss">for:</span> <span class="no">Person</span> <span class="k">do</span>
   <span class="k">def</span> <span class="n">encode</span><span class="p">(%{</span><span class="ss">name:</span> <span class="n">name</span><span class="p">,</span> <span class="ss">age:</span> <span class="n">age</span><span class="p">},</span> <span class="n">options</span><span class="p">)</span> <span class="k">do</span>
