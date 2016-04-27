@@ -69,11 +69,17 @@
         <section class="main-content">
           <article class="post">
   <div class="post-content container">
-    <p>Use the <code class="highlighter-rouge">use</code> keyword in Elixir to package behaviour and implementation for use in other modules, similar to abstract base classes or mixins in other languages. Mixins help reduce the amount of boilerplate in your modules, especially for library authors.</p>
+    <p>Let’s demystify the frequently used <code class="highlighter-rouge">use</code> keyword in Elixir.</p>
 
-<h2 id="background">Background</h2>
+<p>We can use the <code class="highlighter-rouge">use</code> keyword in Elixir to package behaviour and implementation for use in other modules, similar to abstract base classes or mixins in other languages. Mixins reduce the amount of boilerplate in your modules, especially for library authors.</p>
 
-<p>The <code class="highlighter-rouge">use</code> keyword requires the given module and calls the <code class="highlighter-rouge">__using__</code> macro defined for that module. To illustrate, both examples below are equivalent:</p>
+<p>Mixins in Elixir are similar on the surface to <code class="highlighter-rouge">Concerns</code> in Ruby and <code class="highlighter-rouge">Traits</code> in Scala. Before we start, you should be somewhat familiar with <a href="http://elixir-recipes.github.io/modules/behaviours/">behaviours</a> and <a href="http://elixir-recipes.github.io/metaprogramming/macros/">macros</a>.</p>
+
+<!--more-->
+
+<h2 id="the-use-keyword">The <code class="highlighter-rouge">use</code> keyword</h2>
+
+<p><code class="highlighter-rouge">use</code> requires the given module and calls the <code class="highlighter-rouge">__using__</code> macro defined for that module. To illustrate, both examples below are equivalent:</p>
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defmodule</span> <span class="no">MyModule</span> <span class="k">do</span>
   <span class="kn">use</span> <span class="no">Utils</span><span class="p">,</span> <span class="ss">argument:</span> <span class="ss">:value</span>
@@ -163,8 +169,6 @@
 <span class="no">Sup</span> <span class="no">Yos</span>
 <span class="ss">:ok</span></code></pre></figure>
 
-<hr />
-
 <h2 id="other-examples">Other Examples</h2>
 
 <p>If you’ve played around with the OTP, you would have come across <code class="highlighter-rouge">use GenServer</code>. The <a href="http://elixir-lang.org/docs/stable/elixir/GenServer.html"><code class="highlighter-rouge">GenServer</code></a> module uses <code class="highlighter-rouge">use</code> to give developers a set of default client-server functionality which can be overriden. <a href="https://github.com/elixir-lang/elixir/blob/master/lib/elixir/lib/gen_server.ex#L415-L462">Here</a> is an excerpt of its <code class="highlighter-rouge">__using__</code> macro:</p>
@@ -217,6 +221,10 @@
                       <span class="ss">handle_cast:</span> <span class="m">2</span><span class="p">,</span> <span class="ss">terminate:</span> <span class="m">2</span><span class="p">,</span> <span class="ss">code_change:</span> <span class="m">3</span><span class="p">]</span>
     <span class="k">end</span>
   <span class="k">end</span></code></pre></figure>
+
+<h2 id="in-closing">In Closing</h2>
+
+<p>Mixins are a powerful way to organize your modules that is well worth its place in your Elixir toolbox. I hope I have helped you dispel the magic of <code class="highlighter-rouge">use</code>. You should have a better understanding on how you can use mixins to inject code into other modules and reduce boilerplate.</p>
 
   </div>
 

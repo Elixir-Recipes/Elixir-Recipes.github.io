@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Persistent history in IEx",
+      "category" : "iex",
+      "tags"     : "",
+      "url"      : "/iex/persistent-history-iex/",
+      "date"     : "2016-04-25 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Mixins",
       "category" : "modules",
       "tags"     : "",

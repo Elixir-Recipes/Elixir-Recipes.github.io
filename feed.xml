@@ -5,17 +5,44 @@
     <description>A collection of Elixir programming language solutions to common problems.</description>
     <link>http://elixir-recipes.github.io/</link>
     <atom:link href="http://elixir-recipes.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 24 Apr 2016 19:06:46 +0800</pubDate>
-    <lastBuildDate>Sun, 24 Apr 2016 19:06:46 +0800</lastBuildDate>
+    <pubDate>Thu, 28 Apr 2016 01:42:18 +0800</pubDate>
+    <lastBuildDate>Thu, 28 Apr 2016 01:42:18 +0800</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
       <item>
+        <title>Persistent history in IEx</title>
+        <description>&lt;p&gt;By default, user input history in &lt;code class=&quot;highlighter-rouge&quot;&gt;IEx&lt;/code&gt; do not persist across different sessions.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/ferd/erlang-history&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;erlang-history&lt;/code&gt;&lt;/a&gt; adds history support to both the Erlang shell and &lt;code class=&quot;highlighter-rouge&quot;&gt;IEx&lt;/code&gt;:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git clone git@github.com:ferd/erlang-history.git
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;erlang-history
+sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You can now access your previous inputs using the up and down arrow keys, even across sessions.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 25 Apr 2016 00:00:00 +0800</pubDate>
+        <link>http://elixir-recipes.github.io/iex/persistent-history-iex/</link>
+        <guid isPermaLink="true">http://elixir-recipes.github.io/iex/persistent-history-iex/</guid>
+        
+        
+        <category>iex</category>
+        
+      </item>
+    
+      <item>
         <title>Mixins</title>
-        <description>&lt;p&gt;Use the &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; keyword in Elixir to package behaviour and implementation for use in other modules, similar to abstract base classes or mixins in other languages. Mixins help reduce the amount of boilerplate in your modules, especially for library authors.&lt;/p&gt;
+        <description>&lt;p&gt;Let’s demystify the frequently used &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; keyword in Elixir.&lt;/p&gt;
 
-&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt;We can use the &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; keyword in Elixir to package behaviour and implementation for use in other modules, similar to abstract base classes or mixins in other languages. Mixins reduce the amount of boilerplate in your modules, especially for library authors.&lt;/p&gt;
 
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; keyword requires the given module and calls the &lt;code class=&quot;highlighter-rouge&quot;&gt;__using__&lt;/code&gt; macro defined for that module. To illustrate, both examples below are equivalent:&lt;/p&gt;
+&lt;p&gt;Mixins in Elixir are similar on the surface to &lt;code class=&quot;highlighter-rouge&quot;&gt;Concerns&lt;/code&gt; in Ruby and &lt;code class=&quot;highlighter-rouge&quot;&gt;Traits&lt;/code&gt; in Scala. Before we start, you should be somewhat familiar with &lt;a href=&quot;http://elixir-recipes.github.io/modules/behaviours/&quot;&gt;behaviours&lt;/a&gt; and &lt;a href=&quot;http://elixir-recipes.github.io/metaprogramming/macros/&quot;&gt;macros&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;the-use-keyword&quot;&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; keyword&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; requires the given module and calls the &lt;code class=&quot;highlighter-rouge&quot;&gt;__using__&lt;/code&gt; macro defined for that module. To illustrate, both examples below are equivalent:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyModule&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
   &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;argument:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:value&lt;/span&gt;
@@ -105,8 +132,6 @@
 &lt;span class=&quot;no&quot;&gt;Sup&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Yos&lt;/span&gt;
 &lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;hr /&gt;
-
 &lt;h2 id=&quot;other-examples&quot;&gt;Other Examples&lt;/h2&gt;
 
 &lt;p&gt;If you’ve played around with the OTP, you would have come across &lt;code class=&quot;highlighter-rouge&quot;&gt;use GenServer&lt;/code&gt;. The &lt;a href=&quot;http://elixir-lang.org/docs/stable/elixir/GenServer.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GenServer&lt;/code&gt;&lt;/a&gt; module uses &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; to give developers a set of default client-server functionality which can be overriden. &lt;a href=&quot;https://github.com/elixir-lang/elixir/blob/master/lib/elixir/lib/gen_server.ex#L415-L462&quot;&gt;Here&lt;/a&gt; is an excerpt of its &lt;code class=&quot;highlighter-rouge&quot;&gt;__using__&lt;/code&gt; macro:&lt;/p&gt;
@@ -159,6 +184,10 @@
                       &lt;span class=&quot;ss&quot;&gt;handle_cast:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;terminate:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;code_change:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;in-closing&quot;&gt;In Closing&lt;/h2&gt;
+
+&lt;p&gt;Mixins are a powerful way to organize your modules that is well worth its place in your Elixir toolbox. I hope I have helped you dispel the magic of &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt;. You should have a better understanding on how you can use mixins to inject code into other modules and reduce boilerplate.&lt;/p&gt;
 </description>
         <pubDate>Sun, 24 Apr 2016 00:00:00 +0800</pubDate>
         <link>http://elixir-recipes.github.io/modules/mixins/</link>
@@ -559,46 +588,6 @@
         <pubDate>Sat, 02 Apr 2016 00:00:00 +0800</pubDate>
         <link>http://elixir-recipes.github.io/concurrency/sending-and-receiving/</link>
         <guid isPermaLink="true">http://elixir-recipes.github.io/concurrency/sending-and-receiving/</guid>
-        
-        
-        <category>concurrency</category>
-        
-      </item>
-    
-      <item>
-        <title>Spawning processes</title>
-        <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;spawn&lt;/code&gt; creates a new Erlang VM process to run a given module, function, and arguments and returns its process id &lt;code class=&quot;highlighter-rouge&quot;&gt;pid&lt;/code&gt;.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Bob&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;] Bob says: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Bob&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;say&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;I&#39;m Bob&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#PID&amp;lt;0.57.0&amp;gt;] Bob says: sup&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spawn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Bob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;I&#39;m Bob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#PID&amp;lt;0.101.0&amp;gt;] Bob says: I&#39;m Bob&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#PID&amp;lt;0.101.0&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;self&lt;/code&gt; returns the current process’ &lt;code class=&quot;highlighter-rouge&quot;&gt;pid&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Check the &lt;code class=&quot;highlighter-rouge&quot;&gt;PID&lt;/code&gt;s that are printed. We’ve just run the &lt;code class=&quot;highlighter-rouge&quot;&gt;Bob.say&lt;/code&gt; function as a separate process.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Additional reading:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://elixir-lang.org/getting-started/processes.html&quot;&gt;Processes&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;iex&amp;gt; h Process&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Fri, 01 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://elixir-recipes.github.io/concurrency/spawning-processes/</link>
-        <guid isPermaLink="true">http://elixir-recipes.github.io/concurrency/spawning-processes/</guid>
         
         
         <category>concurrency</category>

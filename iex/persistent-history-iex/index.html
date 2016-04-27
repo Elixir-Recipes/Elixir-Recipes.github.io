@@ -10,22 +10,18 @@
 
 <title>
   
-    Home &middot; Elixir Recipes
+    Persistent history in IEx &middot; Elixir Recipes
   
 </title>
 <meta name="description" content="A collection of Elixir programming language solutions to common problems.">
-<meta name="keywords" content="Elixir, language, solutions, patterns, recipes, cookbook">
+<meta name="keywords" content="history, iex">
 <link rel="stylesheet" href="/css/main.css">
 
 
-  <link rel="prev" href="http://elixir-recipes.github.io/page/4">
 
 
 
-  <link rel="next" href="http://elixir-recipes.github.io/page/6">
-
-
-<link rel="canonical" href="http://elixir-recipes.github.io/page/5/">
+<link rel="canonical" href="http://elixir-recipes.github.io/iex/persistent-history-iex/">
 <link rel="alternate" type="application/rss+xml" title="Elixir Recipes" href="http://elixir-recipes.github.io/feed.xml" />
 
 <!-- Icons -->
@@ -33,7 +29,7 @@
 <link rel="icon" href="/images/favicon.ico">
 <script>base_url = "";</script>
   </head>
-  <body class="home">
+  <body class="">
 
     <main class="main-container">
 
@@ -61,14 +57,8 @@
     </a>
 
     
-      <h1>Elixir Recipes</h1>
-      <div class="search">
-  <i class="icon icon-search"></i>
-  <input type="text" id="search-input" class="input" placeholder="type to search...">
-  <ul id="results-container" class="dropdown"></ul>
-</div>
-
-      <small class='text-center'><a class="recipes-link" href="/archive">View recipes by category</a></small>
+      <h1 class="post-title">Persistent history in IEx</h1>
+      <p class="post-meta">Apr 25, 2016</p>
     
 
   </div>
@@ -77,83 +67,67 @@
 
 
         <section class="main-content">
-          <section class="posts txt-center container">
+          <article class="post">
+  <div class="post-content container">
+    <p>By default, user input history in <code class="highlighter-rouge">IEx</code> do not persist across different sessions.</p>
 
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/functions/default-function-parameters/" title="Permalink to: Default function parameters">Default function parameters</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-03-27">Submitted Mar 27, 2016 in <strong>functions</strong></time>
-        </span>
-      
-    </article>
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/iex/retrieving-history/" title="Permalink to: Retrieving values from history">Retrieving values from history</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-03-26">Submitted Mar 26, 2016 in <strong>IEx</strong></time>
-        </span>
-      
-    </article>
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/strings/regular-expressions/" title="Permalink to: Regular expressions">Regular expressions</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-03-26">Submitted Mar 26, 2016 in <strong>strings</strong></time>
-        </span>
-      
-    </article>
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/lists/list-membership/" title="Permalink to: List membership">List membership</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-03-26">Submitted Mar 26, 2016 in <strong>lists</strong></time>
-        </span>
-      
-    </article>
-  
-    <article class="post">
-      
-        <h1>
-          <a class="post-link" href="/lists/list-difference/" title="Permalink to: List difference">List difference</a>
-        </h1>
-        <span class="post-meta">
-          <time class="post-date" datetime="2016-03-26">Submitted Mar 26, 2016 in <strong>lists</strong></time>
-        </span>
-      
-    </article>
-  
+<p><a href="https://github.com/ferd/erlang-history"><code class="highlighter-rouge">erlang-history</code></a> adds history support to both the Erlang shell and <code class="highlighter-rouge">IEx</code>:</p>
 
-  <nav class="pagination" role="pagination">
-    <ul>
-      
-        
-          <li><a class="next" href="/page/4/" title="Articles new">&laquo; Prev</a></li>
-        
-      
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone git@github.com:ferd/erlang-history.git
+<span class="nb">cd </span>erlang-history
+sudo make install</code></pre></figure>
 
-      <li><span class="page-number">Page 5 of 7</span></li>
+<p>You can now access your previous inputs using the up and down arrow keys, even across sessions.</p>
 
-      
-        <li><a class="prev" href="/page/6/" title="Articles old">Next &raquo;</a></li>
-      
-    </ul>
-  </nav>
+  </div>
 
-</section>
+  <div class="container">
+    <aside class="share">
 
+      <span>Share this: </span>
+
+      <a href="http://twitter.com/share?text=Persistent history in IEx&amp;url=http://elixir-recipes.github.io/iex/persistent-history-iex/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="icon icon-twitter-rounded"></i>
+      </a>
+
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://elixir-recipes.github.io/iex/persistent-history-iex/"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <i class="icon icon-facebook-rounded"></i>
+      </a>
+    </aside>
+  </div>
+</article>
+
+
+<hr>
+
+<aside id="comments" class="disqus">
+
+  <div class="container">
+    <h3><i class="icon icon-comments-o"></i> Comments</h3>
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+      var disqus_shortname = 'yosriady';
+      var disqus_identifier = '/iex/persistent-history-iex';
+      var disqus_title = 'Persistent history in IEx';
+      var disqus_url = 'http://elixir-recipes.github.io';
+      /*var disqus_developer = 1;*/
+
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+
+    <noscript>
+      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+</aside>
 
         </section>
 
