@@ -13,7 +13,7 @@ To generate documentation from `@doc` and `@moduledoc` attributes in your source
 
 def deps do
   [{:ex_doc, "~> 0.11", only: :dev},
-   {:earmark, "~> 0.1", only: :dev]
+   {:earmark, "~> 0.1", only: :dev}]
 end
 {% endhighlight %}
 
