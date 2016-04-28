@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Writing and publishing libraries",
+      "category" : "hex",
+      "tags"     : "",
+      "url"      : "/hex/writing-and-publishing-libraries/",
+      "date"     : "2016-04-28 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Persistent history in IEx",
       "category" : "iex",
       "tags"     : "",

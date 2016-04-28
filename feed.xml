@@ -5,9 +5,290 @@
     <description>A collection of Elixir programming language solutions to common problems.</description>
     <link>http://elixir-recipes.github.io/</link>
     <atom:link href="http://elixir-recipes.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 28 Apr 2016 13:03:56 +0800</pubDate>
-    <lastBuildDate>Thu, 28 Apr 2016 13:03:56 +0800</lastBuildDate>
+    <pubDate>Fri, 29 Apr 2016 02:37:41 +0800</pubDate>
+    <lastBuildDate>Fri, 29 Apr 2016 02:37:41 +0800</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
+    
+      <item>
+        <title>Writing and publishing libraries</title>
+        <description>&lt;p&gt;Let’s walk through the process of writing and publishing an &lt;code class=&quot;highlighter-rouge&quot;&gt;Elixir&lt;/code&gt; library from start to finish. For illustrative purposes, we’ll create a pretend &lt;code class=&quot;highlighter-rouge&quot;&gt;simple_statistics&lt;/code&gt; statistics toolkit for Elixir.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note: if you need an actual statistics library check out &lt;a href=&quot;https://hex.pm/packages/statistics&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;statistics&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The full source code is available on &lt;a href=&quot;https://github.com/Leventhan/simple_statistics&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-an-elixir-project&quot;&gt;Create an Elixir Project&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mix new simple_statistics
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;simple_statistics
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mix &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Mix will generate the following directory structure:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;|-- _build
+|-- config/
+  |-- config.exs
+|-- lib/
+  |-- simple_statistics.ex
+|-- &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;/
+  |-- simple_statistics_test.exs
+  |-- test_helper.exs
+|-- mix.exs
+|-- mix.lock
+|-- README.md
+|-- .gitignore&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;write-code&quot;&gt;Write Code&lt;/h2&gt;
+
+&lt;p&gt;You can create a new folder in &lt;code class=&quot;highlighter-rouge&quot;&gt;lib/&lt;/code&gt; with the name of your package (&lt;code class=&quot;highlighter-rouge&quot;&gt;simple_statistics&lt;/code&gt;) to place other modules. It’s a good idea to split code to different modules for modularity. We’ll create a new &lt;code class=&quot;highlighter-rouge&quot;&gt;lib/mean.ex&lt;/code&gt; module.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;|-- lib/
+  |-- simple_statistics/
+    |-- mean.ex
+  |-- simple_statistics.ex&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# lib/simple_statistics/mean.ex&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SimpleStatistics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Mean&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([]),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Kernel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;write-documentation&quot;&gt;Write Documentation&lt;/h2&gt;
+
+&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;@doc&lt;/code&gt; to specify docstrings. You should ideally document every major public function in your modules:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# lib/simple_statistics/mean.ex&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SimpleStatistics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Mean&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;S&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
+  The mean is the sum of all values over the number of values.
+  &quot;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([]),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Kernel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;add-doctests&quot;&gt;Add Doctests&lt;/h2&gt;
+
+&lt;p&gt;You can add &lt;code class=&quot;highlighter-rouge&quot;&gt;doctests&lt;/code&gt; in your docstrings like so:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# lib/simple_statistics/mean.ex&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SimpleStatistics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Mean&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;S&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
+  The mean is the sum of all values over the number of values.
+
+  ## Examples
+
+      iex&amp;gt; SimpleStatistics.Mean.mean([])
+      nil
+      iex&amp;gt; SimpleStatistics.Mean.mean([1,2,3,4,5])
+      3.0
+      iex&amp;gt; SimpleStatistics.Mean.mean([1.5,-2.1,3,4.5,5])
+      2.38
+
+  &quot;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([]),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Kernel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;To run them as part of your test suite:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# test/simple_statistics_test.ex&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SimpleStatisticsTest&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ExUnit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Case&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;doctest&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SimpleStatistics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Mean&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mix &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+.
+
+Finished &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;0.07 seconds &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.07s on load, 0.00s on tests&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+1 &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;, 0 failures&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;add-type-annotations&quot;&gt;Add Type Annotations&lt;/h2&gt;
+
+&lt;p&gt;We can use &lt;a href=&quot;http://elixir-recipes.github.io/types/type-checking/&quot;&gt;Typespecs&lt;/a&gt; to utilize static type checking for our functions:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;nv&quot;&gt;@spec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nonempty_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Kernel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Typespecs helps ensure that there’s no discrepancy between differing types of our program’s constants, variables, and functions.&lt;/p&gt;
+
+&lt;p&gt;You can then perform static analysis by using &lt;code class=&quot;highlighter-rouge&quot;&gt;dialyzer&lt;/code&gt;. First, update your &lt;code class=&quot;highlighter-rouge&quot;&gt;mix.exs&lt;/code&gt; to add &lt;a href=&quot;https://github.com/jeremyjh/dialyxir&quot;&gt;dialyxir&lt;/a&gt; as a dependency:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deps&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:ex_doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;~&amp;gt; 0.11&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;only:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:dev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:earmark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;~&amp;gt; 0.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;only:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:dev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:dialyxir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;~&amp;gt; 0.3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;only:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:dev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Then, run &lt;code class=&quot;highlighter-rouge&quot;&gt;dialyzer&lt;/code&gt; - Erlang’s static analysis tool:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mix dialyzer
+Starting Dialyzer
+dialyzer --no_check_plt --plt /Users/yosriady/.dialyxir_core_18_1.2.0.plt -Wunmatched_returns -Werror_handling -Wrace_conditions -Wunderspecs /Users/yosriady/simple_statistics/_build/dev/lib/simple_statistics/ebin
+  Proceeding with analysis... &lt;span class=&quot;k&quot;&gt;done in &lt;/span&gt;0m1.68s
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;passed successfully&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;generate-documentation&quot;&gt;Generate Documentation&lt;/h2&gt;
+
+&lt;p&gt;Update your &lt;code class=&quot;highlighter-rouge&quot;&gt;mix.exs&lt;/code&gt; to add the following dependencies:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deps&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:ex_doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;~&amp;gt; 0.11&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;only:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:dev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:earmark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;~&amp;gt; 0.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;only:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:dev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Then, run:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mix docs
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;docs
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;open index.html&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/YkPzIyI.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Here is the &lt;a href=&quot;http://yosriady.com/simple_statistics&quot;&gt;live documentation&lt;/a&gt;, hosted on Github Pages.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;As you can see, our documentation also displays docstring examples as well as any type annotations. Cool!&lt;/p&gt;
+
+&lt;h2 id=&quot;publishing-your-library&quot;&gt;Publishing your Library&lt;/h2&gt;
+
+&lt;p&gt;We’re now ready to start publishing our library.&lt;/p&gt;
+
+&lt;h3 id=&quot;register-with-hex&quot;&gt;Register with Hex&lt;/h3&gt;
+
+&lt;p&gt;First, you need to set up an account on &lt;a href=&quot;http://hex.pm&quot;&gt;Hex&lt;/a&gt;, Erlang and Elixir’s package manager:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mix hex.user register&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Click on the email confirmation link to activate your Hex.pm acccount.&lt;/p&gt;
+
+&lt;h3 id=&quot;set-your-projects-metadata&quot;&gt;Set your project’s metadata&lt;/h3&gt;
+
+&lt;p&gt;Update your &lt;code class=&quot;highlighter-rouge&quot;&gt;mix.exs&lt;/code&gt;:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# mix.exs&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;project&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;app:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:decision_tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;ss&quot;&gt;version:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0.0.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;ss&quot;&gt;elixir:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;~&amp;gt; 1.2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;ss&quot;&gt;build_embedded:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Mix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:prod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;ss&quot;&gt;start_permanent:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Mix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:prod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;ss&quot;&gt;description:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;ss&quot;&gt;package:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;package&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;ss&quot;&gt;deps:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;defp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
+  A few sentences (a paragraph) describing the project.
+  &quot;&quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;defp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+   &lt;span class=&quot;ss&quot;&gt;files:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;lib&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;mix.exs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;README.md&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+   &lt;span class=&quot;ss&quot;&gt;maintainers:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Yos Riady&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+   &lt;span class=&quot;ss&quot;&gt;licenses:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apache 2.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+   &lt;span class=&quot;ss&quot;&gt;links:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;%{&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;GitHub&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;https://github.com/Leventhan/simple_statistics&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Docs&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;http://hexdocs.pm/simple_statistics/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;After the package metadata and dependencies have been added to&lt;code class=&quot;highlighter-rouge&quot;&gt; mix.exs&lt;/code&gt;, we are ready to publish the package with the &lt;a href=&quot;https://hex.pm/docs/tasks#hex_publish&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mix hex.publish&lt;/code&gt;&lt;/a&gt; command:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mix hex.publish
+Publishing simple_statistics 0.0.1
+  Dependencies:
+  Files:
+    lib/simple_statistics.ex
+    lib/simple_statistics/mean.ex
+    mix.exs
+    README.md
+  App: simple_statistics
+  Name: simple_statistics
+  Description: Statistics toolkit &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;Elixir.
+  Version: 0.0.1
+  Build tools: mix
+  Licenses: Apache 2.0
+  Maintainers: Yos Riady
+  Links:
+    Docs: http://hexdocs.pm/simple_statistics/
+    GitHub: https://github.com/Leventhan/simple_statistics
+  Elixir: ~&amp;gt; 1.2
+  WARNING! Excluded dependencies &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;not part of the Hex package&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:
+    ex_doc
+    earmark
+    dialyxir
+Before publishing, please &lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;Hex Code of Conduct: https://hex.pm/docs/codeofconduct
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#########################] 100%&lt;/span&gt;
+Published at https://hex.pm/packages/simple_statistics/0.0.1
+Don&lt;span class=&quot;s1&quot;&gt;&#39;t forget to upload your documentation with `mix hex.docs`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Note that this will be published as the version specified in &lt;code class=&quot;highlighter-rouge&quot;&gt;mix.exs&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A published version can be amended or reverted with &lt;code class=&quot;highlighter-rouge&quot;&gt;--revert&lt;/code&gt; up to one hour after its publication. If you want to revert a publication that is more than one hour old you need to contact an administrator.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;publishing-documentation&quot;&gt;Publishing Documentation&lt;/h2&gt;
+
+&lt;p&gt;You can publish your documentation to &lt;a href=&quot;https://hexdocs.pm/&quot;&gt;Hex Docs&lt;/a&gt;. The documentation will be generated by running the &lt;code class=&quot;highlighter-rouge&quot;&gt;mix docs&lt;/code&gt; task.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mix hex.docs
+Docs successfully generated.
+View them at &lt;span class=&quot;s2&quot;&gt;&quot;doc/index.html&quot;&lt;/span&gt;.
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#########################] 100%&lt;/span&gt;
+Published docs &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;simple_statistics 0.0.1
+Hosted at https://hexdocs.pm/simple_statistics/0.0.1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;See the &lt;a href=&quot;https://hexdocs.pm/simple_statistics&quot;&gt;live documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This documentation will be accessible at &lt;code class=&quot;highlighter-rouge&quot;&gt;https://hexdocs.pm/my_package/1.0.0&lt;/code&gt;. In addition, &lt;code class=&quot;highlighter-rouge&quot;&gt;https://hexdocs.pm/my_package&lt;/code&gt; will always redirect to the latest published version. Instead of Hex.pm, you can alternatively host the documentation at &lt;code class=&quot;highlighter-rouge&quot;&gt;docs/&lt;/code&gt; yourself or on Github Pages.&lt;/p&gt;
+
+&lt;h2 id=&quot;appendix-versioning&quot;&gt;Appendix: Versioning&lt;/h2&gt;
+
+&lt;p&gt;Publish a new version by updating the &lt;code class=&quot;highlighter-rouge&quot;&gt;version&lt;/code&gt; value in &lt;code class=&quot;highlighter-rouge&quot;&gt;mix.exs&lt;/code&gt; and running &lt;code class=&quot;highlighter-rouge&quot;&gt;mix hex.publish&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Remember to use &lt;a href=&quot;https://git-scm.com/book/en/v2/Git-Basics-Tagging&quot;&gt;Git tags&lt;/a&gt; to annotate version changes!&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git tag -a v0.0.1 -m &lt;span class=&quot;s2&quot;&gt;&quot;Version 0.0.1&quot;&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git push origin v0.0.1 &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;in-closing&quot;&gt;In Closing&lt;/h2&gt;
+
+&lt;p&gt;We’ve succesfully written and published an Elixir library! Writing and publishing libraries in Elixir is easy and straightforward. Other developers can now add your library into their &lt;code class=&quot;highlighter-rouge&quot;&gt;deps&lt;/code&gt; and start using it in their projects.&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading! Let me know if you have any feedback in the comments below.&lt;/p&gt;
+
+&lt;h2 id=&quot;additional-reading&quot;&gt;Additional Reading&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hex.pm/&quot;&gt;Hex.pm&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hex.pm/docs/publish&quot;&gt;Publishing to Hex&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hex.pm/docs/tasks&quot;&gt;Hex Mix tasks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 28 Apr 2016 00:00:00 +0800</pubDate>
+        <link>http://elixir-recipes.github.io/hex/writing-and-publishing-libraries/</link>
+        <guid isPermaLink="true">http://elixir-recipes.github.io/hex/writing-and-publishing-libraries/</guid>
+        
+        
+        <category>hex</category>
+        
+      </item>
     
       <item>
         <title>Persistent history in IEx</title>
@@ -37,8 +318,6 @@ sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;We can use the &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; keyword in Elixir to package behaviour and implementation for use in other modules, similar to abstract base classes or mixins in other languages. Mixins reduce the amount of boilerplate in your modules, especially for library authors.&lt;/p&gt;
 
 &lt;p&gt;Mixins in Elixir are similar on the surface to &lt;code class=&quot;highlighter-rouge&quot;&gt;Concerns&lt;/code&gt; in Ruby and &lt;code class=&quot;highlighter-rouge&quot;&gt;Traits&lt;/code&gt; in Scala. Before we start, you should be somewhat familiar with &lt;a href=&quot;http://elixir-recipes.github.io/modules/behaviours/&quot;&gt;behaviours&lt;/a&gt; and &lt;a href=&quot;http://elixir-recipes.github.io/metaprogramming/macros/&quot;&gt;macros&lt;/a&gt;.&lt;/p&gt;
-
-&lt;!--more--&gt;
 
 &lt;h2 id=&quot;the-use-keyword&quot;&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; keyword&lt;/h2&gt;
 
@@ -546,55 +825,6 @@ sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
         
         
         <category>types</category>
-        
-      </item>
-    
-      <item>
-        <title>Sending and Receiving</title>
-        <description>&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;send&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;receive&lt;/code&gt; to communicate between processes.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;receiver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;] Sending &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; to &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;receiver&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;send&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;receiver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;] is listening&quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;receive&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;] Received &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; from &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;In the above module, we have two functions:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tell&lt;/code&gt; sends a message to a receiver using &lt;code class=&quot;highlighter-rouge&quot;&gt;send&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;send&lt;/code&gt; takes a &lt;code class=&quot;highlighter-rouge&quot;&gt;pid&lt;/code&gt; and a message - usually a tuple&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;listen&lt;/code&gt; recursively calls &lt;code class=&quot;highlighter-rouge&quot;&gt;receive&lt;/code&gt;, which is a blocking operation that waits for a message to the current process’ &lt;code class=&quot;highlighter-rouge&quot;&gt;pid&lt;/code&gt; and executes some code in response&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;On &lt;code class=&quot;highlighter-rouge&quot;&gt;iex&lt;/code&gt;:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jeff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spawn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#PID&amp;lt;0.78.0&amp;gt;] is listening&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#PID&amp;lt;0.78.0&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jeff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sup jeff&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#PID&amp;lt;0.57.0&amp;gt;] Sending Sup jeff to #PID&amp;lt;0.78.0&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#PID&amp;lt;0.78.0&amp;gt;] Received Sup jeff from #PID&amp;lt;0.57.0&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#PID&amp;lt;0.78.0&amp;gt;] is listening&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#PID&amp;lt;0.57.0&amp;gt;, &quot;Sup jeff&quot;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;In the above, &lt;code class=&quot;highlighter-rouge&quot;&gt;#PID&amp;lt;0.57.0&amp;gt;&lt;/code&gt; refers to our current process, and &lt;code class=&quot;highlighter-rouge&quot;&gt;#PID&amp;lt;0.78.0&amp;gt;&lt;/code&gt; refers to the &lt;code class=&quot;highlighter-rouge&quot;&gt;jeff&lt;/code&gt; process.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 02 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://elixir-recipes.github.io/concurrency/sending-and-receiving/</link>
-        <guid isPermaLink="true">http://elixir-recipes.github.io/concurrency/sending-and-receiving/</guid>
-        
-        
-        <category>concurrency</category>
         
       </item>
     
