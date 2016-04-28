@@ -5,8 +5,8 @@
     <description>A collection of Elixir programming language solutions to common problems.</description>
     <link>http://elixir-recipes.github.io/</link>
     <atom:link href="http://elixir-recipes.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 28 Apr 2016 01:42:18 +0800</pubDate>
-    <lastBuildDate>Thu, 28 Apr 2016 01:42:18 +0800</lastBuildDate>
+    <pubDate>Thu, 28 Apr 2016 13:03:56 +0800</pubDate>
+    <lastBuildDate>Thu, 28 Apr 2016 13:03:56 +0800</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
       <item>
@@ -184,6 +184,10 @@ sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
                       &lt;span class=&quot;ss&quot;&gt;handle_cast:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;terminate:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;code_change:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;alternatives-to-use&quot;&gt;Alternatives to &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;If you don’t need metaprogramming, control over method overriding, nor pass in parameters to your &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; call - look into using &lt;a href=&quot;http://elixir-lang.org/getting-started/alias-require-and-import.html#import&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;&lt;/a&gt; instead.&lt;/p&gt;
 
 &lt;h2 id=&quot;in-closing&quot;&gt;In Closing&lt;/h2&gt;
 
