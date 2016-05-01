@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Bang Macro",
+      "category" : "metaprogramming",
+      "tags"     : "",
+      "url"      : "/metaprogramming/bang-macro/",
+      "date"     : "2016-05-01 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Writing and publishing libraries",
       "category" : "hex",
       "tags"     : "",
