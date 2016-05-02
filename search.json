@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Listing a Module&#39;s Functions",
+      "category" : "metaprogramming",
+      "tags"     : "",
+      "url"      : "/metaprogramming/listing-module-functions/",
+      "date"     : "2016-05-02 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Bang Macro",
       "category" : "metaprogramming",
       "tags"     : "",

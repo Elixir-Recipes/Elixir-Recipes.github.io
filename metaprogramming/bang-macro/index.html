@@ -69,7 +69,7 @@
         <section class="main-content">
           <article class="post">
   <div class="post-content container">
-    <p>In Elixir, we have a naming convention where functions with <code class="highlighter-rouge">!</code> suffixed at the end of its name (<code class="highlighter-rouge">run!</code>) will raise an <a href="http://elixir-lang.org/getting-started/try-catch-and-rescue.html">exception</a> if the function encounters an error.</p>
+    <p>In Elixir, we have a naming convention where functions with <code class="highlighter-rouge">!</code> suffixed at the end of its name e.g. <code class="highlighter-rouge">run!</code> will raise an <a href="http://elixir-lang.org/getting-started/try-catch-and-rescue.html">exception</a> if the function encounters an error.</p>
 
 <p>One example is <code class="highlighter-rouge">Enum.fetch!</code> It also has a same <code class="highlighter-rouge">Enum.fetch</code> which does not raise exception. Both functions finds the element at the given index. The difference is <code class="highlighter-rouge">Enum.fetch!</code> raises <code class="highlighter-rouge">OutOfBoundsError</code> if the given position is outside the range of the collection.</p>
 
@@ -87,6 +87,8 @@
       <span class="k">end</span>
     <span class="k">end</span>
   <span class="k">end</span></code></pre></figure>
+
+<!--more-->
 
 <p>Let’s see a full example.</p>
 
