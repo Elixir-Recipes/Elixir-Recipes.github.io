@@ -69,9 +69,9 @@
         <section class="main-content">
           <article class="post">
   <div class="post-content container">
-    <p>In Elixir, we have a naming convention where functions with <code class="highlighter-rouge">!</code> suffixed at the end of its name e.g. <code class="highlighter-rouge">run!</code> will raise an <a href="http://elixir-lang.org/getting-started/try-catch-and-rescue.html">exception</a> if the function encounters an error.</p>
+    <p>We have a naming convention in Elixir where functions with <code class="highlighter-rouge">!</code> suffixed at the end of its name (e.g. <code class="highlighter-rouge">run!</code>) will raise an <a href="http://elixir-lang.org/getting-started/try-catch-and-rescue.html">exception</a> if the function encounters an error.</p>
 
-<p>One example is <code class="highlighter-rouge">Enum.fetch!</code> It also has a same <code class="highlighter-rouge">Enum.fetch</code> which does not raise exception. Both functions finds the element at the given index. The difference is <code class="highlighter-rouge">Enum.fetch!</code> raises <code class="highlighter-rouge">OutOfBoundsError</code> if the given position is outside the range of the collection.</p>
+<p><code class="highlighter-rouge">Enum.fetch!</code> is one example. It has a sibling <code class="highlighter-rouge">Enum.fetch</code> function which does not raise exception. Both functions finds the element at the given index. The difference is <code class="highlighter-rouge">Enum.fetch!</code> raises <code class="highlighter-rouge">OutOfBoundsError</code> if the given position is outside the range of the collection.</p>
 
 <p>Here’s a nice <a href="elixir-recipes.github.io/metaprogramming/macros/">macro</a> you can use to generate <code class="highlighter-rouge">bang!</code> versions of your existing non-raising functions.</p>
 

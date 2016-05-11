@@ -5,8 +5,8 @@
     <description>A collection of Elixir programming language solutions to common problems.</description>
     <link>http://elixir-recipes.github.io/</link>
     <atom:link href="http://elixir-recipes.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 May 2016 21:17:58 +0800</pubDate>
-    <lastBuildDate>Mon, 02 May 2016 21:17:58 +0800</lastBuildDate>
+    <pubDate>Thu, 12 May 2016 02:21:53 +0800</pubDate>
+    <lastBuildDate>Thu, 12 May 2016 02:21:53 +0800</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
       <item>
@@ -42,9 +42,9 @@ one of the following atoms:&lt;/p&gt;
     
       <item>
         <title>Bang Macro</title>
-        <description>&lt;p&gt;In Elixir, we have a naming convention where functions with &lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt; suffixed at the end of its name e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;run!&lt;/code&gt; will raise an &lt;a href=&quot;http://elixir-lang.org/getting-started/try-catch-and-rescue.html&quot;&gt;exception&lt;/a&gt; if the function encounters an error.&lt;/p&gt;
+        <description>&lt;p&gt;We have a naming convention in Elixir where functions with &lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt; suffixed at the end of its name (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;run!&lt;/code&gt;) will raise an &lt;a href=&quot;http://elixir-lang.org/getting-started/try-catch-and-rescue.html&quot;&gt;exception&lt;/a&gt; if the function encounters an error.&lt;/p&gt;
 
-&lt;p&gt;One example is &lt;code class=&quot;highlighter-rouge&quot;&gt;Enum.fetch!&lt;/code&gt; It also has a same &lt;code class=&quot;highlighter-rouge&quot;&gt;Enum.fetch&lt;/code&gt; which does not raise exception. Both functions finds the element at the given index. The difference is &lt;code class=&quot;highlighter-rouge&quot;&gt;Enum.fetch!&lt;/code&gt; raises &lt;code class=&quot;highlighter-rouge&quot;&gt;OutOfBoundsError&lt;/code&gt; if the given position is outside the range of the collection.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Enum.fetch!&lt;/code&gt; is one example. It has a sibling &lt;code class=&quot;highlighter-rouge&quot;&gt;Enum.fetch&lt;/code&gt; function which does not raise exception. Both functions finds the element at the given index. The difference is &lt;code class=&quot;highlighter-rouge&quot;&gt;Enum.fetch!&lt;/code&gt; raises &lt;code class=&quot;highlighter-rouge&quot;&gt;OutOfBoundsError&lt;/code&gt; if the given position is outside the range of the collection.&lt;/p&gt;
 
 &lt;p&gt;Here’s a nice &lt;a href=&quot;elixir-recipes.github.io/metaprogramming/macros/&quot;&gt;macro&lt;/a&gt; you can use to generate &lt;code class=&quot;highlighter-rouge&quot;&gt;bang!&lt;/code&gt; versions of your existing non-raising functions.&lt;/p&gt;
 
