@@ -10,9 +10,9 @@ We define an Elixir function `pmap` using the [Task API](http://elixir-lang.org/
 
 {% highlight elixir %}
 defmodule Parallel do
-  def pmap(collection, func)
+  def pmap(collection, func) do
     collection
-    |> Enum.map(&(Task.async(fn -> func.(&1 end))))
+    |> Enum.map(&(Task.async(fn -> func.(&1) end)))
     |> Enum.map(&Task.await/1)
   end
 end
