@@ -6,9 +6,9 @@ category: "metaprogramming"
 comments: true
 ---
 
-In Elixir, we have a naming convention where functions with `!` suffixed at the end of its name e.g. `run!` will raise an [exception](http://elixir-lang.org/getting-started/try-catch-and-rescue.html) if the function encounters an error.
+We have a naming convention in Elixir where functions with `!` suffixed at the end of its name (e.g. `run!`) will raise an [exception](http://elixir-lang.org/getting-started/try-catch-and-rescue.html) if the function encounters an error.
 
-One example is `Enum.fetch!` It also has a same `Enum.fetch` which does not raise exception. Both functions finds the element at the given index. The difference is `Enum.fetch!` raises `OutOfBoundsError` if the given position is outside the range of the collection.
+`Enum.fetch!` is one example. It has a sibling `Enum.fetch` function which does not raise exception. Both functions finds the element at the given index. The difference is `Enum.fetch!` raises `OutOfBoundsError` if the given position is outside the range of the collection.
 
 Here's a nice [macro](elixir-recipes.github.io/metaprogramming/macros/) you can use to generate `bang!` versions of your existing non-raising functions.
 
