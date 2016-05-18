@@ -72,9 +72,9 @@
     <p>We define an Elixir function <code class="highlighter-rouge">pmap</code> using the <a href="http://elixir-lang.org/docs/stable/elixir/Task.html">Task API</a> to convert sequential code into concurrent code by computing values asynchronously:</p>
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defmodule</span> <span class="no">Parallel</span> <span class="k">do</span>
-  <span class="k">def</span> <span class="n">pmap</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
+  <span class="k">def</span> <span class="n">pmap</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span> <span class="k">do</span>
     <span class="n">collection</span>
-    <span class="o">|&gt;</span> <span class="no">Enum</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="no">Task</span><span class="o">.</span><span class="n">async</span><span class="p">(</span><span class="k">fn</span> <span class="o">-&gt;</span> <span class="n">func</span><span class="o">.</span><span class="p">(</span><span class="nv">&amp;1</span> <span class="k">end</span><span class="p">))))</span>
+    <span class="o">|&gt;</span> <span class="no">Enum</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="no">Task</span><span class="o">.</span><span class="n">async</span><span class="p">(</span><span class="k">fn</span> <span class="o">-&gt;</span> <span class="n">func</span><span class="o">.</span><span class="p">(</span><span class="nv">&amp;1</span><span class="p">)</span> <span class="k">end</span><span class="p">)))</span>
     <span class="o">|&gt;</span> <span class="no">Enum</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="no">Task</span><span class="o">.</span><span class="n">await</span><span class="o">/</span><span class="m">1</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span></code></pre></figure>

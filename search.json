@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Convert floats to int",
+      "category" : "floats",
+      "tags"     : "",
+      "url"      : "/floats/convert-float-to-int/",
+      "date"     : "2016-05-18 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Listing a Module&#39;s Functions",
       "category" : "metaprogramming",
       "tags"     : "",
