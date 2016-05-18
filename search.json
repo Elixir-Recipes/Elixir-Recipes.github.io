@@ -9,6 +9,14 @@
     } ,
   
     {
+      "title"    : "Convert anything to string",
+      "category" : "strings",
+      "tags"     : "",
+      "url"      : "/strings/convert-anything-to-string/",
+      "date"     : "2016-05-18 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Listing a Module&#39;s Functions",
       "category" : "metaprogramming",
       "tags"     : "",
