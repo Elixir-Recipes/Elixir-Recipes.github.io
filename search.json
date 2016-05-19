@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Asserting exceptions",
+      "category" : "testing",
+      "tags"     : "",
+      "url"      : "/testing/asserting-exceptions/",
+      "date"     : "2016-05-19 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Convert floats to int",
       "category" : "floats",
       "tags"     : "",
