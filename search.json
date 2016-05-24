@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Raising a number to a power",
+      "category" : "math",
+      "tags"     : "",
+      "url"      : "/math/raising-number-to-power/",
+      "date"     : "2016-05-20 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Asserting exceptions",
       "category" : "testing",
       "tags"     : "",
