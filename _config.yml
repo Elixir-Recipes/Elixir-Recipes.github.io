@@ -1,0 +1,36 @@
+permalink   : /:categories/:title/
+markdown    : kramdown
+syntax_highlighter: coderay
+highlighter: rouge
+
+paginate: 20
+comments: true
+paginate_path: "/page/:num"
+
+source: source
+destination: _site
+sass:
+  sass_dir: _scss
+  style: compressed
+
+gems:
+- jekyll-paginate
+- jekyll-sitemap
+- jemoji
+
+# site title, description, meta_description, meta_keywords
+# Details for the RSS feed generator
+name: Elixir Recipes
+title: Elixir Recipes
+description: "A collection of Elixir programming language solutions to common problems."
+keywords: "Elixir, language, solutions, patterns, recipes, cookbook"
+url: http://elixir-recipes.github.io
+baseurl: ""
+repo: https://github.com/Elixir-Recipes/elixir-recipes.github.io/tree/source
+disqus_shortname: yosriady
+
+author:
+  name      : Yos Riady
+  url       : http://elixir-recipes.github.io
+  github    : http://github.com/ElixirRecipes
+  bio       : "Elixir Recipes to common problems and use cases."
