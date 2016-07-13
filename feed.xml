@@ -5,9 +5,83 @@
     <description>A collection of Elixir programming language solutions to common problems.</description>
     <link>http://elixir-recipes.github.io/</link>
     <atom:link href="http://elixir-recipes.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 May 2016 20:16:26 +0800</pubDate>
-    <lastBuildDate>Wed, 25 May 2016 20:16:26 +0800</lastBuildDate>
+    <pubDate>Wed, 13 Jul 2016 11:01:44 +0800</pubDate>
+    <lastBuildDate>Wed, 13 Jul 2016 11:01:44 +0800</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
+    
+      <item>
+        <title>Build lists with sigils</title>
+        <description>&lt;p&gt;Use the &lt;code class=&quot;highlighter-rouge&quot;&gt;~w&lt;/code&gt; sigil to generate lists of strings:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;b&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;c&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Append the &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; option to generate a list of atoms:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Mon, 13 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://elixir-recipes.github.io/collections/build-lists-with-sigils/</link>
+        <guid isPermaLink="true">http://elixir-recipes.github.io/collections/build-lists-with-sigils/</guid>
+        
+        
+        <category>collections</category>
+        
+      </item>
+    
+      <item>
+        <title>Microbenchmarking</title>
+        <description>&lt;p&gt;Use &lt;a href=&quot;https://github.com/alco/benchfella&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;benchfella&lt;/code&gt;&lt;/a&gt; or &lt;a href=&quot;https://github.com/PragTob/benchee&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;benchee&lt;/code&gt;&lt;/a&gt; to perform microbenchmarking of your Elixir code.&lt;/p&gt;
+
+&lt;p&gt;Using &lt;code class=&quot;highlighter-rouge&quot;&gt;benchfella&lt;/code&gt;:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BasicBench&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Benchfella&lt;/span&gt;
+
+  &lt;span class=&quot;nv&quot;&gt;@list&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;bench&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hello list&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;@list&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Using &lt;code class=&quot;highlighter-rouge&quot;&gt;benchee&lt;/code&gt;:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10_000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;map_fun&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Benchee&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(%{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;time:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;%{&lt;/span&gt;
+  &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;flat_map&quot;&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flat_map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;map_fun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;map.flatten&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map_fun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flatten&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Sat, 04 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://elixir-recipes.github.io/performance/microbenchmarking/</link>
+        <guid isPermaLink="true">http://elixir-recipes.github.io/performance/microbenchmarking/</guid>
+        
+        
+        <category>performance</category>
+        
+      </item>
+    
+      <item>
+        <title>Inspecting the BEAM</title>
+        <description>
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This will open the GUI observer interface, showing you CPU breakdown, memory usage, and other information critical to understanding the usage patterns of your applications.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 01 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://elixir-recipes.github.io/performance/inspecting-the-beam/</link>
+        <guid isPermaLink="true">http://elixir-recipes.github.io/performance/inspecting-the-beam/</guid>
+        
+        
+        <category>performance</category>
+        
+      </item>
     
       <item>
         <title>Asserting exceptions</title>
@@ -471,339 +545,6 @@ sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
         
         
         <category>iex</category>
-        
-      </item>
-    
-      <item>
-        <title>Mixins</title>
-        <description>&lt;p&gt;Let’s demystify the frequently used &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; keyword in Elixir.&lt;/p&gt;
-
-&lt;p&gt;We can use the &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; keyword in Elixir to package behaviour and implementation for use in other modules, similar to abstract base classes or mixins in other languages. Mixins reduce the amount of boilerplate in your modules, especially for library authors.&lt;/p&gt;
-
-&lt;p&gt;Mixins in Elixir are similar on the surface to &lt;code class=&quot;highlighter-rouge&quot;&gt;Concerns&lt;/code&gt; in Ruby and &lt;code class=&quot;highlighter-rouge&quot;&gt;Traits&lt;/code&gt; in Scala. Before we start, you should be somewhat familiar with &lt;a href=&quot;http://elixir-recipes.github.io/modules/behaviours/&quot;&gt;behaviours&lt;/a&gt; and &lt;a href=&quot;http://elixir-recipes.github.io/metaprogramming/macros/&quot;&gt;macros&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-use-keyword&quot;&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; keyword&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; requires the given module and calls the &lt;code class=&quot;highlighter-rouge&quot;&gt;__using__&lt;/code&gt; macro defined for that module. To illustrate, both examples below are equivalent:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyModule&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;argument:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:value&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyModule&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;kn&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Utils&lt;/span&gt;
-  &lt;span class=&quot;no&quot;&gt;Utils&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__using__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;argument:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;p&gt;Now take a look at the &lt;code class=&quot;highlighter-rouge&quot;&gt;Filter&lt;/code&gt; module defined below:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Filter&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-   &lt;span class=&quot;c1&quot;&gt;# Define behaviours which user modules have to implement, with type annotations&lt;/span&gt;
-   &lt;span class=&quot;nv&quot;&gt;@callback&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# When you call use in your module, the __using__ macro is called.&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;defmacro&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__using__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;kn&quot;&gt;quote&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;c1&quot;&gt;# User modules must implement the Filter callbacks&lt;/span&gt;
-      &lt;span class=&quot;nv&quot;&gt;@behaviour&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Filter&lt;/span&gt;
-
-      &lt;span class=&quot;c1&quot;&gt;# Define implementation for user modules to use&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;HEY!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;greet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-      &lt;span class=&quot;c1&quot;&gt;# Defoverridable makes the given functions in the current module overridable&lt;/span&gt;
-      &lt;span class=&quot;c1&quot;&gt;# Without defoverridable, new definitions of greet will not be picked up&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;defoverridable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;shout:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;greet:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;First, we define a behaviour callback &lt;code class=&quot;highlighter-rouge&quot;&gt;transform&lt;/code&gt; with the &lt;code class=&quot;highlighter-rouge&quot;&gt;@callback&lt;/code&gt; attribute. Modules that &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; the &lt;code class=&quot;highlighter-rouge&quot;&gt;Filter&lt;/code&gt; module will need to implement &lt;code class=&quot;highlighter-rouge&quot;&gt;transform&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;We then define the &lt;code class=&quot;highlighter-rouge&quot;&gt;__using__&lt;/code&gt; macro using &lt;code class=&quot;highlighter-rouge&quot;&gt;defmacro&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;__using__&lt;/code&gt; is called whenever the &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; keyword is called with this module.&lt;/p&gt;
-
-&lt;p&gt;We can accept any &lt;code class=&quot;highlighter-rouge&quot;&gt;_params&lt;/code&gt; specified in the &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; call, but we’re not using any for this example.&lt;/p&gt;
-
-&lt;p&gt;Within the body of the &lt;code class=&quot;highlighter-rouge&quot;&gt;__using__&lt;/code&gt; macro, we use &lt;code class=&quot;highlighter-rouge&quot;&gt;quote&lt;/code&gt; to return a quoted expression. The execution of this quoted expression is deferred until runtime, when the &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; keyword is executed within the user module. This lets us inject code to user modules.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;http://elixir-lang.org/getting-started/meta/macros.html&quot;&gt;Read this&lt;/a&gt; if you need a refresher on macros.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Here we use the &lt;code class=&quot;highlighter-rouge&quot;&gt;@behaviour&lt;/code&gt; attribute to denote that modules that use &lt;code class=&quot;highlighter-rouge&quot;&gt;Filter&lt;/code&gt; must implement the callbacks defined in &lt;code class=&quot;highlighter-rouge&quot;&gt;Filter&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;We define some default concrete implementations of &lt;code class=&quot;highlighter-rouge&quot;&gt;shout/0&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;greet/1&lt;/code&gt; which will be injected to user modules. We then use &lt;code class=&quot;highlighter-rouge&quot;&gt;defoverridable&lt;/code&gt; to denote that it can be overriden.&lt;/p&gt;
-
-&lt;p&gt;Now let’s take a look at a &lt;code class=&quot;highlighter-rouge&quot;&gt;MyFilter&lt;/code&gt; module which &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; the &lt;code class=&quot;highlighter-rouge&quot;&gt;Filter&lt;/code&gt; module:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyFilter&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Filter&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# Override default Filter implementation&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;greet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sup &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;In our module we override the &lt;code class=&quot;highlighter-rouge&quot;&gt;greet/1&lt;/code&gt; function with our own implementation.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;If we didn’t explicitly add &lt;code class=&quot;highlighter-rouge&quot;&gt;greet/1&lt;/code&gt; to our &lt;code class=&quot;highlighter-rouge&quot;&gt;defoverridable&lt;/code&gt;, new definitions of &lt;code class=&quot;highlighter-rouge&quot;&gt;greet/1&lt;/code&gt; will not be picked up and we would use the original definition instead.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;However, compiling the above module gives us the following warning: &lt;code class=&quot;highlighter-rouge&quot;&gt;warning: undefined behaviour function transform/1 (for behaviour Filter)&lt;/code&gt;. This is because we’re missing a required behaviour implementation &lt;code class=&quot;highlighter-rouge&quot;&gt;transform&lt;/code&gt;. Let’s implement all our behaviour callbacks:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyFilter&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Filter&lt;/span&gt;
-  
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# Override default Filter implementation&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;greet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sup&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MyFilter&lt;/code&gt; will now compile without warnings. With just a single line of code, we’ve injected &lt;code class=&quot;highlighter-rouge&quot;&gt;MyFilter&lt;/code&gt; with behaviours and default overridable implementation:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyFilter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;yay&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;yay&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyFilter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shout&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;HEY&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;!&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyFilter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greet&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Yos&quot;&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Sup&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Yos&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;other-examples&quot;&gt;Other Examples&lt;/h2&gt;
-
-&lt;p&gt;If you’ve played around with the OTP, you would have come across &lt;code class=&quot;highlighter-rouge&quot;&gt;use GenServer&lt;/code&gt;. The &lt;a href=&quot;http://elixir-lang.org/docs/stable/elixir/GenServer.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GenServer&lt;/code&gt;&lt;/a&gt; module uses &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; to give developers a set of default client-server functionality which can be overriden. &lt;a href=&quot;https://github.com/elixir-lang/elixir/blob/master/lib/elixir/lib/gen_server.ex#L415-L462&quot;&gt;Here&lt;/a&gt; is an excerpt of its &lt;code class=&quot;highlighter-rouge&quot;&gt;__using__&lt;/code&gt; macro:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;  &lt;span class=&quot;k&quot;&gt;defmacro&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__using__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;kn&quot;&gt;quote&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;location:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:keep&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;nv&quot;&gt;@behaviour&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:gen_server&lt;/span&gt;
-
-      &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-      &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handle_call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# We do this to trick Dialyzer to not complain about non-local returns.&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;reason&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:bad_call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:erlang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phash2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-          &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reason&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-          &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reason&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-      &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handle_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:noreply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-      &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handle_cast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# We do this to trick Dialyzer to not complain about non-local returns.&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;reason&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:bad_cast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:erlang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phash2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-          &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reason&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-          &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reason&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-      &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;terminate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_reason&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-        &lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-      &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code_change&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_old&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_extra&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-      &lt;span class=&quot;n&quot;&gt;defoverridable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;init:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;handle_call:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;handle_info:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                      &lt;span class=&quot;ss&quot;&gt;handle_cast:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;terminate:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;code_change:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;alternatives-to-use&quot;&gt;Alternatives to &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt;&lt;/h2&gt;
-
-&lt;p&gt;If you don’t need metaprogramming, control over method overriding, nor pass in parameters to your &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; call - look into using &lt;a href=&quot;http://elixir-lang.org/getting-started/alias-require-and-import.html#import&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;&lt;/a&gt; instead.&lt;/p&gt;
-
-&lt;h2 id=&quot;in-closing&quot;&gt;In Closing&lt;/h2&gt;
-
-&lt;p&gt;Mixins are a powerful way to organize your modules that is well worth its place in your Elixir toolbox. I hope I have helped you dispel the magic of &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt;. You should have a better understanding on how you can use mixins to inject code into other modules and reduce boilerplate.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 24 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://elixir-recipes.github.io/modules/mixins/</link>
-        <guid isPermaLink="true">http://elixir-recipes.github.io/modules/mixins/</guid>
-        
-        
-        <category>modules</category>
-        
-      </item>
-    
-      <item>
-        <title>Macros</title>
-        <description>&lt;p&gt;An Elixir program can be represented by its own data structures as a nested (abstract syntax) tree of tuples with three elements. For example, the function call &lt;code class=&quot;highlighter-rouge&quot;&gt;run(1, 2, 3)&lt;/code&gt; is represented internally as:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;strong&gt;Macros&lt;/strong&gt; in Elixir lets you perform &lt;a href=&quot;http://www.scheme.com/tspl3/syntax.html&quot;&gt;syntactic extensions&lt;/a&gt;, which are expanded to before a program executes. We use macros to transform our internal program structure by treating code as data, and thus &lt;a href=&quot;https://en.wikipedia.org/wiki/Metaprogramming&quot;&gt;metaprogram&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyModule&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;defmacro&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;macro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;We defined a macro with &lt;code class=&quot;highlighter-rouge&quot;&gt;defmacro&lt;/code&gt;, and take in a block of code as arguments. Macros in Elixir transforms the block of &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; into its internal Abstract Syntax Tree (AST) representation, which is a nested tree of triples (3-size tuples.) When the macro &lt;code class=&quot;highlighter-rouge&quot;&gt;macro&lt;/code&gt; returns &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt;, that internal representation is injected back into the global program’s compile tree. In the above example, we just return it unmodified.&lt;/p&gt;
-
-&lt;p&gt;Let’s call our macro:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyModule&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyModule&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;macro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;line:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;line:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyModule&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;macro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sup&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;line:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:__aliases__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;counter:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;line:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:IO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:puts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;line:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sup&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;What’s most useful here is that we can modify that internal representation before returning, transforming it into a completely different piece of code.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyModule&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;defmacro&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;macro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;newcode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;quote&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Whatever.&quot;&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newcode&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;newcode&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyModule&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;macro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;line:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;line:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:__aliases__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;alias:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:IO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:puts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Whatever.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Whatever&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Note that &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; was never executed/evaluated, only the returned &lt;code class=&quot;highlighter-rouge&quot;&gt;newcode&lt;/code&gt; was executed.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;quote&lt;/code&gt; lets us transform a block of code into its internal AST representation. Internally, &lt;code class=&quot;highlighter-rouge&quot;&gt;defmacro&lt;/code&gt; calls this method to passed in parameters.&lt;/p&gt;
-
-&lt;p&gt;In the example above, we return a new internal representation &lt;code class=&quot;highlighter-rouge&quot;&gt;newcode&lt;/code&gt; instead of the original &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt;. Running the macro on any block of code results in the insertion and execution of our &lt;code class=&quot;highlighter-rouge&quot;&gt;newcode&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;What if we want to evaluate a code block? &lt;code class=&quot;highlighter-rouge&quot;&gt;unquote&lt;/code&gt; lets you defer execution of the code block it receives, only running it when the code generated by &lt;code class=&quot;highlighter-rouge&quot;&gt;quote&lt;/code&gt; is executed. You can only use &lt;code class=&quot;highlighter-rouge&quot;&gt;unquote&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;quote&lt;/code&gt; blocks.&lt;/p&gt;
-
-&lt;p&gt;Here’s an example:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyModule&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;defmacro&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;macro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;
-    &lt;span class=&quot;kn&quot;&gt;quote&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;unquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is_number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Not a number&quot;&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyModule&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;macro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;line:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;line:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}]}&lt;/span&gt;
-&lt;span class=&quot;m&quot;&gt;7&lt;/span&gt;
-&lt;span class=&quot;m&quot;&gt;7&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyModule&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;macro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Hello&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; world&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:&amp;lt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;line:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Hello&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; world&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Hello world&quot;&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;In the above example, we evaluate code using &lt;code class=&quot;highlighter-rouge&quot;&gt;unquote&lt;/code&gt; and use its result to perform some computation dispatched via pattern matching.&lt;/p&gt;
-
-&lt;p&gt;You can find real life examples of macros in &lt;a href=&quot;https://github.com/phoenixframework/phoenix/blob/master/lib/phoenix/router.ex#L344-L358&quot;&gt;Phoenix&lt;/a&gt; and &lt;a href=&quot;https://github.com/elixir-lang/elixir/blob/master/lib/ex_unit/lib/ex_unit/assertions.ex#L95-L169&quot;&gt;ExUnit&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Additional reading:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://pragprog.com/book/cmelixir/metaprogramming-elixir&quot;&gt;Metaprogramming Elixir&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Fri, 15 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://elixir-recipes.github.io/metaprogramming/macros/</link>
-        <guid isPermaLink="true">http://elixir-recipes.github.io/metaprogramming/macros/</guid>
-        
-        
-        <category>metaprogramming</category>
-        
-      </item>
-    
-      <item>
-        <title>Protocols</title>
-        <description>&lt;p&gt;&lt;strong&gt;Protocols&lt;/strong&gt; enable polymorphism in Elixir. Define protocols with &lt;code class=&quot;highlighter-rouge&quot;&gt;defprotocol&lt;/code&gt;:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defprotocol&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Log&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Implement a protocol with &lt;code class=&quot;highlighter-rouge&quot;&gt;defimpl&lt;/code&gt;:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;kn&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Logger&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# User and Post are custom structs&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;defimpl&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;for:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_opts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;Logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;User: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;defimpl&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;for:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_opts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;Logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Post: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Instead of sharing protocol implementation with maps, structs require their own protocol implementation.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;With the above implementations, we can do:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(%&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Yos&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;span class=&quot;m&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;53&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;11.604&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;ss&quot;&gt;User:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Yos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;23&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(%&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;title:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Protocols&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;category:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Protocols&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;span class=&quot;m&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;53&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;43.604&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;ss&quot;&gt;Post:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Protocols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Protocols&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Protocols let you dispatch to any data type, so long as it implements the protocol. This includes some built-in types such as &lt;code class=&quot;highlighter-rouge&quot;&gt;Atom&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;BitString&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Tuples&lt;/code&gt;, and others.&lt;/p&gt;
-
-&lt;h2 id=&quot;other-examples&quot;&gt;Other Examples&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/devinus/poison#encoder&quot;&gt;Poison&lt;/a&gt; allows developers to implement &lt;code class=&quot;highlighter-rouge&quot;&gt;Encoders&lt;/code&gt; for their own structs for serializing them to JSON, by implementing the &lt;code class=&quot;highlighter-rouge&quot;&gt;Poison.Encoder&lt;/code&gt; protocol.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defimpl&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Poison&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Encoder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;for:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(%{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;Poison&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Encoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;BitString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;strong&gt;Additional reading:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;elixir-lang.org/getting-started/protocols.html&quot;&gt;Protocols&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Thu, 14 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://elixir-recipes.github.io/protocols/protocols/</link>
-        <guid isPermaLink="true">http://elixir-recipes.github.io/protocols/protocols/</guid>
-        
-        
-        <category>protocols</category>
         
       </item>
     

@@ -1,6 +1,30 @@
 [
   
     {
+      "title"    : "Build lists with sigils",
+      "category" : "collections",
+      "tags"     : "",
+      "url"      : "/collections/build-lists-with-sigils/",
+      "date"     : "2016-06-13 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Microbenchmarking",
+      "category" : "performance",
+      "tags"     : "",
+      "url"      : "/performance/microbenchmarking/",
+      "date"     : "2016-06-04 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Inspecting the BEAM",
+      "category" : "performance",
+      "tags"     : "",
+      "url"      : "/performance/inspecting-the-beam/",
+      "date"     : "2016-06-01 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Asserting exceptions",
       "category" : "testing",
       "tags"     : "",
