@@ -73,6 +73,30 @@
     } ,
   
     {
+      "title"    : "Slicing a string",
+      "category" : "strings",
+      "tags"     : "",
+      "url"      : "/strings/slicing-a-string/",
+      "date"     : "2016-05-13 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Joining strings",
+      "category" : "strings",
+      "tags"     : "",
+      "url"      : "/strings/joining-strings/",
+      "date"     : "2016-05-10 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Splitting a string",
+      "category" : "strings",
+      "tags"     : "",
+      "url"      : "/strings/splitting-strings/",
+      "date"     : "2016-05-07 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Listing a Module&#39;s Functions",
       "category" : "metaprogramming",
       "tags"     : "",
