@@ -9,6 +9,14 @@
     } ,
   
     {
+      "title"    : "Custom Mix Task",
+      "category" : "mix",
+      "tags"     : "",
+      "url"      : "/mix/custom-mix-task/",
+      "date"     : "2016-06-07 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Microbenchmarking",
       "category" : "performance",
       "tags"     : "",
@@ -22,6 +30,22 @@
       "tags"     : "",
       "url"      : "/performance/inspecting-the-beam/",
       "date"     : "2016-06-01 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Inspecting an Erlang module",
+      "category" : "erlang",
+      "tags"     : "",
+      "url"      : "/erlang/inspecting-an-erlang-module/",
+      "date"     : "2016-05-24 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Using Erlang from Elixir",
+      "category" : "erlang",
+      "tags"     : "",
+      "url"      : "/erlang/using-erlang-from-elixir/",
+      "date"     : "2016-05-20 00:00:00 +0800"
     } ,
   
     {
