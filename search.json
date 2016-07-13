@@ -25,6 +25,14 @@
     } ,
   
     {
+      "title"    : "Module attributes as constants",
+      "category" : "modules",
+      "tags"     : "",
+      "url"      : "/modules/module-attributes-as-constants/",
+      "date"     : "2016-06-02 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Inspecting the BEAM",
       "category" : "performance",
       "tags"     : "",
