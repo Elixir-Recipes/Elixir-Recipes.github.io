@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Functions that delegate to another module",
+      "category" : "modules",
+      "tags"     : "",
+      "url"      : "/modules/functions-delegate-to-another-module/",
+      "date"     : "2016-06-25 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Connecting nodes on different machines",
       "category" : "concurrency",
       "tags"     : "",
