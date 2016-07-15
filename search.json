@@ -1,11 +1,27 @@
 [
   
     {
+      "title"    : "Connecting nodes on different machines",
+      "category" : "concurrency",
+      "tags"     : "",
+      "url"      : "/concurrency/connecting-nodes-different-machines/",
+      "date"     : "2016-06-18 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Build lists with sigils",
       "category" : "collections",
       "tags"     : "",
       "url"      : "/collections/build-lists-with-sigils/",
       "date"     : "2016-06-13 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Connecting nodes on the same machine",
+      "category" : "concurrency",
+      "tags"     : "",
+      "url"      : "/concurrency/connecting-nodes-same-machine/",
+      "date"     : "2016-06-10 00:00:00 +0800"
     } ,
   
     {
