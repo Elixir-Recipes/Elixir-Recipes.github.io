@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Connecting nodes"
+title:  "Connecting nodes on the same machine"
 keywords: "nodes, concurrency"
 category: "concurrency"
 comments: true

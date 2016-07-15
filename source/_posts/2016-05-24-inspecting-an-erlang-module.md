@@ -6,6 +6,8 @@ category: "erlang"
 comments: true
 ---
 
+Use `.module_info`:
+
 {% highlight elixir %}
  iex> :math.module_info
  [module: :math,
