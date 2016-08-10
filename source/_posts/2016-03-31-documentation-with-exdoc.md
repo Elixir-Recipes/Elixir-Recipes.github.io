@@ -19,7 +19,7 @@ end
 
 > You can use Markdown within Elixir `@doc` and `@moduledoc` attributes.
 
-Then, run `mix docs`. 
+Then, run `mix deps.get` to fetch and compile the new modules and generate the project documentation with `mix docs`. 
 An example output is the [official Elixir Docs](http://elixir-lang.org/docs/stable/elixir/).
 
 
