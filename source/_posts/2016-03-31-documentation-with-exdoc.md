@@ -12,8 +12,7 @@ To generate documentation from `@doc` and `@moduledoc` attributes in your source
 # config/mix.exs
 
 def deps do
-  [{:ex_doc, "~> 0.11", only: :dev},
-   {:earmark, "~> 0.1", only: :dev}]
+  [{:ex_doc, "~> 0.11", only: :dev}]
 end
 {% endhighlight %}
 
