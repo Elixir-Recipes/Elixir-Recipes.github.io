@@ -6,9 +6,9 @@ category: collections
 comments: true
 ---
 
-In Elixir, or Erlang or any other functionnal programming language, you can easily manipulate lists using recursion.
-In particular, you can extract elements from a list and separate them from the rest of the elements, in an efficient way.
-This recipe will take as an example the case in which you have a list where magnet link and other character strings are mixed together.
+Functional programming languages such as Elixir and Erlang lets you easily manipulate lists using recursion.
+You can extract individual elements from a list and separate them from the rest of the elements, in an concise way.
+One example is a list where magnet link and other character strings are mixed together.
 
 {% highlight elixir %}
 defmodule SortItems do
