@@ -12,8 +12,7 @@ To generate documentation from `@doc` and `@moduledoc` attributes in your source
 # config/mix.exs
 
 def deps do
-  [{:ex_doc, "~> 0.11", only: :dev},
-   {:earmark, "~> 0.1", only: :dev}]
+  [{:ex_doc, "~> 0.11", only: :dev}]
 end
 {% endhighlight %}
 
@@ -26,4 +25,5 @@ An example output is the [official Elixir Docs](http://elixir-lang.org/docs/stab
 
 **Additional reading:**
 
-- [ex_doc](https://github.com/elixir-lang/ex_doc)
+- [`ex_doc`](https://github.com/elixir-lang/ex_doc)
+- [Version requirement operators (`Elixir.Version`)](http://elixir-lang.org/docs/stable/elixir/Version.html) 
