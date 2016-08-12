@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Using recursion to extract particular elements from a list",
+      "category" : "collections",
+      "tags"     : "",
+      "url"      : "/collections/using-recursion-to-extract-particular-elements-from-a-list/",
+      "date"     : "2016-08-07 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Functions that delegate to another module",
       "category" : "modules",
       "tags"     : "",
