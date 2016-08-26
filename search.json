@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Generate a random number",
+      "category" : "random",
+      "tags"     : "",
+      "url"      : "/random/generate-a-random-number/",
+      "date"     : "2016-08-26 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Accumulating @annotations",
       "category" : "metaprogramming",
       "tags"     : "",
