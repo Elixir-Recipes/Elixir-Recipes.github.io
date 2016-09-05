@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Anonymous functions in pipe chain",
+      "category" : "functions",
+      "tags"     : "",
+      "url"      : "/functions/anonymous-functions-in-pipe-chain/",
+      "date"     : "2016-08-31 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Trim whitespace from strings",
       "category" : "strings",
       "tags"     : "",
