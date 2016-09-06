@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Convert atoms to strings",
+      "category" : "atoms",
+      "tags"     : "",
+      "url"      : "/atoms/convert-atoms-to-strings/",
+      "date"     : "2016-09-02 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Anonymous functions in pipe chain",
       "category" : "functions",
       "tags"     : "",
