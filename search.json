@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Monitoring a process",
+      "category" : "concurrency",
+      "tags"     : "",
+      "url"      : "/concurrency/monitoring-a-process/",
+      "date"     : "2016-09-11 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Convert atoms to strings",
       "category" : "atoms",
       "tags"     : "",
@@ -25,11 +33,27 @@
     } ,
   
     {
+      "title"    : "Generate a random number",
+      "category" : "random",
+      "tags"     : "",
+      "url"      : "/random/generate-a-random-number/",
+      "date"     : "2016-08-26 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Accumulating @annotations",
       "category" : "metaprogramming",
       "tags"     : "",
       "url"      : "/metaprogramming/accumulating-annotations/",
       "date"     : "2016-08-24 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Configuration",
+      "category" : "mix",
+      "tags"     : "",
+      "url"      : "/mix/configuration/",
+      "date"     : "2016-08-12 00:00:00 +0800"
     } ,
   
     {

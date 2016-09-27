@@ -3,25 +3,25 @@
   <head>
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="REvSdOuXsnRcvRVGXVhLRG_6ZFcu3tMz9POkG0Uy1g4" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
-<meta name="theme-color" content="#2ecc71">
 
 <title>
   
-    Pattern matching with structs &middot; Elixir Recipes
+    Configuration &middot; Elixir Recipes
   
 </title>
 <meta name="description" content="A collection of Elixir programming language solutions to common problems.">
-<meta name="keywords" content="pattern matching, structs, type checking">
+<meta name="keywords" content="configuration">
 <link rel="stylesheet" href="/css/main.css">
 
 
 
 
 
-<link rel="canonical" href="http://elixir-recipes.github.io/pattern%20matching/pattern-matching-structs/">
+<link rel="canonical" href="http://elixir-recipes.github.io/mix/configuration/">
 <link rel="alternate" type="application/rss+xml" title="Elixir Recipes" href="http://elixir-recipes.github.io/feed.xml" />
 
 <!-- Icons -->
@@ -57,8 +57,8 @@
     </a>
 
     
-      <h1 class="post-title">Pattern matching with structs</h1>
-      <p class="post-meta">Mar 28, 2016</p>
+      <h1 class="post-title">Configuration</h1>
+      <p class="post-meta">Aug 12, 2016</p>
     
 
   </div>
@@ -69,9 +69,33 @@
         <section class="main-content">
           <article class="post">
   <div class="post-content container">
-    <p>Structs in Elixir are maps with a fixed set of fields and default values for those fields. You can pattern match structs by type as well as content.</p>
+    <p>You can specify <code class="highlighter-rouge">config</code> values for the current project and its third-party dependencies at <code class="highlighter-rouge">config/config.exs</code>:</p>
 
-<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="no">TODO</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="c1"># config/config.exs</span>
+<span class="kn">use</span> <span class="no">Mix</span><span class="o">.</span><span class="no">Config</span>
+
+<span class="c1"># Project config</span>
+<span class="n">config</span> <span class="ss">:mymodule</span><span class="p">,</span>
+  <span class="ss">api_url:</span> <span class="sd">"</span><span class="s2">http://api.seave.co"</span>
+  <span class="ss">namespace:</span> <span class="sd">"</span><span class="s2">hello"</span>
+
+<span class="c1"># Third party dependency</span>
+<span class="n">config</span> <span class="ss">:logger</span><span class="p">,</span>
+  <span class="ss">verbose:</span> <span class="no">true</span></code></pre></figure>
+
+<p>Your current project and any third party libraries will be able to pick it up through <code class="highlighter-rouge">Application.get_env</code>:</p>
+
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="c1"># lib/client.exs</span>
+
+<span class="k">defmodule</span> <span class="no">Client</span> <span class="k">do</span>
+  <span class="k">def</span> <span class="n">log</span>
+    <span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="no">Application</span><span class="o">.</span><span class="n">get_env</span><span class="p">(</span><span class="ss">:mymodule</span><span class="p">,</span> <span class="ss">:key</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">iex</span><span class="o">&gt;</span> <span class="no">Client</span><span class="o">.</span><span class="n">log</span>
+<span class="n">hello</span></code></pre></figure>
+
 
   </div>
 
@@ -80,12 +104,12 @@
 
       <span>Share this: </span>
 
-      <a href="http://twitter.com/share?text=Pattern matching with structs&amp;url=http://elixir-recipes.github.io/pattern%20matching/pattern-matching-structs/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
+      <a href="http://twitter.com/share?text=Configuration&amp;url=http://elixir-recipes.github.io/mix/configuration/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <i class="icon icon-twitter-rounded"></i>
       </a>
 
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://elixir-recipes.github.io/pattern%20matching/pattern-matching-structs/"
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://elixir-recipes.github.io/mix/configuration/"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <i class="icon icon-facebook-rounded"></i>
       </a>
@@ -104,9 +128,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'yosriady';
-      var disqus_identifier = '/pattern%20matching/pattern-matching-structs';
-      var disqus_title = 'Pattern matching with structs';
-      var disqus_url = 'http://elixir-recipes.github.io';
+      var disqus_identifier = '/mix/configuration';
+      var disqus_title = 'Configuration';
+      var disqus_url = 'http://elixir-recipes.github.io/mix/configuration/';
       /*var disqus_developer = 1;*/
 
       (function() {
@@ -135,7 +159,7 @@
     
   </ul>
 
-  <small>Made with <i class="icon icon-heart"></i> by <a href="http://yosriady.com" target="_blank">Yos Riady</a></small>
+  <small>Made with <i class="icon icon-heart"></i> by <a href="http://yosriady.com" target="_blank">Yos Riady</a> and <a href="https://github.com/Elixir-Recipes/Elixir-Recipes.github.io/graphs/contributors" target="_blank">awesome contributors</a></small>
 
 </footer>
 
