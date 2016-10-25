@@ -9,6 +9,14 @@
     } ,
   
     {
+      "title"    : "List all Phoenix routes",
+      "category" : "phoenix",
+      "tags"     : "",
+      "url"      : "/phoenix/list-phoenix-routes/",
+      "date"     : "2016-09-29 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Monitoring a process",
       "category" : "concurrency",
       "tags"     : "",
