@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Checking if a string includes a substring",
+      "category" : "strings",
+      "tags"     : "",
+      "url"      : "/strings/checking-if-strings-contain-substring/",
+      "date"     : "2016-10-19 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Monitoring a process",
       "category" : "concurrency",
       "tags"     : "",
