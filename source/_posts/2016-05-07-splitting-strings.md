@@ -7,6 +7,6 @@ comments: true
 ---
 
 {% highlight elixir %}
-iex> String.split("Elixir, Antidote, Panacea", ",")
+iex> String.split("Elixir, Antidote, Panacea", ", ")
 ["Elixir", "Antidote", "Panacea"]
 {% endhighlight %}
