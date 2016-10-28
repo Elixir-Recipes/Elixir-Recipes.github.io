@@ -33,6 +33,4 @@ rake publish
 
 This command will build and push the local `_site` subdirectory to the `master` branch for Github Pages to render.
 
-## Contributors
-
-- [Yos Riady](https://github.com/Leventhan)
+### Thank you to all our [Contributors](https://github.com/Elixir-Recipes/Elixir-Recipes.github.io/graphs/contributors)!
