@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Counting words in a file",
+      "category" : "files",
+      "tags"     : "",
+      "url"      : "/files/counting-words-in-a-file/",
+      "date"     : "2016-10-28 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Checking if a string includes a substring",
       "category" : "strings",
       "tags"     : "",
