@@ -1,6 +1,30 @@
 [
   
     {
+      "title"    : "Create an array containing the alphabet",
+      "category" : "strings",
+      "tags"     : "",
+      "url"      : "/strings/list-with-alphabet/",
+      "date"     : "2016-11-20 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Cancel a multiline command",
+      "category" : "IEx",
+      "tags"     : "",
+      "url"      : "/iex/cancel-multiline-command/",
+      "date"     : "2016-11-20 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Finding matching elements in a list or a map",
+      "category" : "collections",
+      "tags"     : "",
+      "url"      : "/collections/find-matching-element-in-collection/",
+      "date"     : "2016-11-17 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Counting words in a file",
       "category" : "files",
       "tags"     : "",
