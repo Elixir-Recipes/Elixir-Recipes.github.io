@@ -7,6 +7,6 @@ comments: true
 ---
 
 {% highlight elixir %}
-iex> round(42.5)
-43
+iex> Kernel.trunc(42.5)
+42
 {% endhighlight %}
