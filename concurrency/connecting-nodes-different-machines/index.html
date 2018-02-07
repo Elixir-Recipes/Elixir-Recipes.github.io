@@ -71,12 +71,12 @@
   <div class="post-content container">
     <p>Let’s see how we can connect multiple nodes on the same machine:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>iex --sname foo
-<span class="gp">iex(foo@yosriady)&gt; </span>Node.list
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>iex <span class="nt">--sname</span> foo
+iex<span class="o">(</span>foo@yosriady<span class="o">)&gt;</span> Node.list
 <span class="o">[]</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>iex --sname bar
-<span class="gp">iex(bar@yosriady)&gt; </span>Node.list
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>iex <span class="nt">--sname</span> bar
+iex<span class="o">(</span>bar@yosriady<span class="o">)&gt;</span> Node.list
 <span class="o">[]</span></code></pre></figure>
 
 <p>We have two nodes, both unaware of each other. Let’s connect them:</p>
@@ -93,7 +93,7 @@
 
 <p>Now let’s see how we can connect multiple nodes on different machines over the network. You’ll need to get the two machines’ IP addresses via <code class="highlighter-rouge">ifconfig</code>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ifconfig
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ifconfig
 lo0: <span class="nv">flags</span><span class="o">=</span>8049&lt;UP,LOOPBACK,RUNNING,MULTICAST&gt; mtu 16384
 	<span class="nv">options</span><span class="o">=</span>3&lt;RXCSUM,TXCSUM&gt;
 	inet6 ::1 prefixlen 128
@@ -101,7 +101,7 @@ lo0: <span class="nv">flags</span><span class="o">=</span>8049&lt;UP,LOOPBACK,RU
 	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1
 	nd6 <span class="nv">options</span><span class="o">=</span>1&lt;PERFORMNUD&gt;
 gif0: <span class="nv">flags</span><span class="o">=</span>8010&lt;POINTOPOINT,MULTICAST&gt; mtu 1280
-stf0: <span class="nv">flags</span><span class="o">=</span>0&lt;&gt; mtu 1280
+stf0: <span class="nv">flags</span><span class="o">=</span>0&lt;<span class="o">&gt;</span> mtu 1280
 en0: <span class="nv">flags</span><span class="o">=</span>8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500
 	ether 34:36:3b:d4:fc:dc
 	inet6 fe80::3636:3bff:fed4:fcdc%en0 prefixlen 64 scopeid 0x4

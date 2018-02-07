@@ -81,9 +81,9 @@
 
 <h2 id="create-an-elixir-project">Create an Elixir Project</h2>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>mix new simple_statistics
-<span class="gp">$ </span><span class="nb">cd </span>simple_statistics
-<span class="gp">$ </span>mix <span class="nb">test</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>mix new simple_statistics
+<span class="nv">$ </span><span class="nb">cd </span>simple_statistics
+<span class="nv">$ </span>mix <span class="nb">test</span></code></pre></figure>
 
 <p>Mix will generate the following directory structure:</p>
 
@@ -123,9 +123,9 @@
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="c1"># lib/simple_statistics/mean.ex</span>
 <span class="k">defmodule</span> <span class="no">SimpleStatistics</span><span class="o">.</span><span class="no">Mean</span> <span class="k">do</span>
-  <span class="nv">@doc</span> <span class="err">~</span><span class="no">S</span><span class="sd">"""
+  <span class="nv">@doc</span> <span class="sx">~S""</span><span class="sd">"</span><span class="s2">
   The mean is the sum of all values over the number of values.
-  """</span>
+  "</span><span class="sd">"</span><span class="s2">"</span>
   <span class="k">def</span> <span class="n">mean</span><span class="p">([]),</span> <span class="k">do</span><span class="p">:</span> <span class="no">nil</span>
   <span class="k">def</span> <span class="n">mean</span><span class="p">(</span><span class="n">list</span><span class="p">)</span> <span class="k">do</span>
     <span class="no">Enum</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">list</span><span class="p">)</span> <span class="o">/</span> <span class="no">Kernel</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
@@ -138,10 +138,10 @@
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="c1"># lib/simple_statistics/mean.ex</span>
 <span class="k">defmodule</span> <span class="no">SimpleStatistics</span><span class="o">.</span><span class="no">Mean</span> <span class="k">do</span>
-  <span class="nv">@doc</span> <span class="err">~</span><span class="no">S</span><span class="sd">"""
+  <span class="nv">@doc</span> <span class="sx">~S""</span><span class="sd">"</span><span class="s2">
   The mean is the sum of all values over the number of values.
 
-  ## Examples
+  </span><span class="err">##</span><span class="s2"> Examples
 
       iex&gt; SimpleStatistics.Mean.mean([])
       nil
@@ -150,7 +150,7 @@
       iex&gt; SimpleStatistics.Mean.mean([1.5,-2.1,3,4.5,5])
       2.38
 
-  """</span>
+  "</span><span class="sd">"</span><span class="s2">"</span>
   <span class="k">def</span> <span class="n">mean</span><span class="p">([]),</span> <span class="k">do</span><span class="p">:</span> <span class="no">nil</span>
   <span class="k">def</span> <span class="n">mean</span><span class="p">(</span><span class="n">list</span><span class="p">)</span> <span class="k">do</span>
     <span class="no">Enum</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">list</span><span class="p">)</span> <span class="o">/</span> <span class="no">Kernel</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
@@ -165,8 +165,8 @@
   <span class="n">doctest</span> <span class="no">SimpleStatistics</span><span class="o">.</span><span class="no">Mean</span>
 <span class="k">end</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>mix <span class="nb">test</span>
-.
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>mix <span class="nb">test</span>
+<span class="nb">.</span>
 
 Finished <span class="k">in </span>0.07 seconds <span class="o">(</span>0.07s on load, 0.00s on tests<span class="o">)</span>
 1 <span class="nb">test</span>, 0 failures</code></pre></figure>
@@ -192,9 +192,9 @@ Finished <span class="k">in </span>0.07 seconds <span class="o">(</span>0.07s on
 
 <p>Then, run <code class="highlighter-rouge">dialyzer</code> - Erlang’s static analysis tool:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>mix dialyzer
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>mix dialyzer
 Starting Dialyzer
-dialyzer --no_check_plt --plt /Users/yosriady/.dialyxir_core_18_1.2.0.plt -Wunmatched_returns -Werror_handling -Wrace_conditions -Wunderspecs /Users/yosriady/simple_statistics/_build/dev/lib/simple_statistics/ebin
+dialyzer <span class="nt">--no_check_plt</span> <span class="nt">--plt</span> /Users/yosriady/.dialyxir_core_18_1.2.0.plt <span class="nt">-Wunmatched_returns</span> <span class="nt">-Werror_handling</span> <span class="nt">-Wrace_conditions</span> <span class="nt">-Wunderspecs</span> /Users/yosriady/simple_statistics/_build/dev/lib/simple_statistics/ebin
   Proceeding with analysis... <span class="k">done in </span>0m1.68s
 <span class="k">done</span> <span class="o">(</span>passed successfully<span class="o">)</span></code></pre></figure>
 
@@ -209,9 +209,9 @@ dialyzer --no_check_plt --plt /Users/yosriady/.dialyxir_core_18_1.2.0.plt -Wunma
 
 <p>Then, run:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>mix docs
-<span class="gp">$ </span><span class="nb">cd </span>docs
-<span class="gp">$ </span>open index.html</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>mix docs
+<span class="nv">$ </span><span class="nb">cd </span>docs
+<span class="nv">$ </span>open index.html</code></pre></figure>
 
 <p><img src="http://i.imgur.com/YkPzIyI.png" alt="" /></p>
 
@@ -229,7 +229,7 @@ dialyzer --no_check_plt --plt /Users/yosriady/.dialyxir_core_18_1.2.0.plt -Wunma
 
 <p>First, you need to set up an account on <a href="http://hex.pm">Hex</a>, Erlang and Elixir’s package manager:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>mix hex.user register</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>mix hex.user register</code></pre></figure>
 
 <p>Click on the email confirmation link to activate your Hex.pm acccount.</p>
 
@@ -267,7 +267,7 @@ dialyzer --no_check_plt --plt /Users/yosriady/.dialyxir_core_18_1.2.0.plt -Wunma
 
 <p>After the package metadata and dependencies have been added to<code class="highlighter-rouge"> mix.exs</code>, we are ready to publish the package with the <a href="https://hex.pm/docs/tasks#hex_publish"><code class="highlighter-rouge">mix hex.publish</code></a> command:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>mix hex.publish
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>mix hex.publish
 Publishing simple_statistics 0.0.1
   Dependencies:
   Files:
@@ -305,9 +305,9 @@ Don<span class="s1">'t forget to upload your documentation with `mix hex.docs`</
 
 <p>You can publish your documentation to <a href="https://hexdocs.pm/">Hex Docs</a>. The documentation will be generated by running the <code class="highlighter-rouge">mix docs</code> task.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>mix hex.docs
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>mix hex.docs
 Docs successfully generated.
-View them at <span class="s2">"doc/index.html"</span>.
+View them at <span class="s2">"doc/index.html"</span><span class="nb">.</span>
 <span class="o">[</span><span class="c">#########################] 100%</span>
 Published docs <span class="k">for </span>simple_statistics 0.0.1
 Hosted at https://hexdocs.pm/simple_statistics/0.0.1</code></pre></figure>
@@ -322,8 +322,8 @@ Hosted at https://hexdocs.pm/simple_statistics/0.0.1</code></pre></figure>
 
 <p>Remember to use <a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">Git tags</a> to annotate version changes!</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>git tag -a v0.0.1 -m <span class="s2">"Version 0.0.1"</span>
-<span class="gp">$ </span>git push origin v0.0.1 </code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>git tag <span class="nt">-a</span> v0.0.1 <span class="nt">-m</span> <span class="s2">"Version 0.0.1"</span>
+<span class="nv">$ </span>git push origin v0.0.1 </code></pre></figure>
 
 <h2 id="in-closing">In Closing</h2>
 

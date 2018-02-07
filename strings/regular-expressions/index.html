@@ -84,9 +84,9 @@
 
 <p><code class="highlighter-rouge">run</code> runs the regular expression against the given string until the first match.</p>
 
-<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">iex</span><span class="o">&gt;</span> <span class="no">Regex</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="err">~</span><span class="n">r</span><span class="p">{</span><span class="n">c</span><span class="p">(</span><span class="n">d</span><span class="p">)},</span> <span class="sd">"</span><span class="s2">abcd"</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">iex</span><span class="o">&gt;</span> <span class="no">Regex</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="sr">~r{c(d)}</span><span class="p">,</span> <span class="sd">"</span><span class="s2">abcd"</span><span class="p">)</span>
 <span class="p">[</span><span class="sd">"</span><span class="s2">cd"</span><span class="p">,</span> <span class="sd">"</span><span class="s2">d"</span><span class="p">]</span>
-<span class="n">iex</span><span class="o">&gt;</span> <span class="no">Regex</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="err">~</span><span class="n">r</span><span class="p">{</span><span class="n">e</span><span class="p">},</span> <span class="sd">"</span><span class="s2">abcd"</span><span class="p">)</span>
+<span class="n">iex</span><span class="o">&gt;</span> <span class="no">Regex</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="sr">~r{e}</span><span class="p">,</span> <span class="sd">"</span><span class="s2">abcd"</span><span class="p">)</span>
 <span class="no">nil</span></code></pre></figure>
 
 <blockquote>

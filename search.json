@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "How to connect and debug Elixir or Phoenix App at Heroku?",
+      "category" : "debug",
+      "tags"     : "",
+      "url"      : "/debug/how-to-connect-and-debug-elixir-or-phoenix-app-at-heroku/",
+      "date"     : "2017-10-21 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Create an array containing the alphabet",
       "category" : "strings",
       "tags"     : "",
