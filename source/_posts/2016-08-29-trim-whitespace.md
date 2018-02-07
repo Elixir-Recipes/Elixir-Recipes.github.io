@@ -6,9 +6,9 @@ category: strings
 comments: true
 ---
 
-Using `String.strip`, `String.lstrip`, and `String.rstrip` to trim whitespace from strings:
+Using `String.trim` to trim whitespace from strings:
 
 {% highlight elixir %}
-iex> String.strip("   abc  ")
+iex> String.trim("   abc  ")
 "abc"
 {% endhighlight %}
