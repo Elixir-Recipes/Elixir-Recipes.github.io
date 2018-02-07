@@ -1,0 +1,37 @@
+<header class="site-header">
+
+  <div class="container txt-center">
+    <a href="#" class="nav-toogle js-menu-trigger sliding-panel-button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </a>
+
+    <nav class="js-menu sliding-panel-content">
+      <ul>
+        <li><a href="{{ "/" | prepend: site.baseurl }}">home</a></li>
+        <li><a href="{{ "/about" | prepend: site.baseurl }}">about</a></li>
+        <li><a href="{{ "/archive" | prepend: site.baseurl }}">all recipes</a></li>
+        <li><a href="{{ "/feed.xml" | prepend: site.baseurl }}" target="_blank"><i class="icon icon-feed"></i> feed</a></li>
+      </ul>
+    </nav>
+    <div class="js-menu-screen sliding-panel-fade-screen"></div>
+
+    <a href="{{ "/" | prepend: site.baseurl }}" class="author-thumb dot">
+      <img src="{{ "/images/logo.png" | prepend: site.baseurl }}" alt={{ site.name }} class="dot">
+    </a>
+
+    {% if page.id %}
+      <h1 class="post-title">{{ page.title }}</h1>
+      <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+    {% elsif page.bodyclass == 'page' %}
+      <h1 class="post-title">{{ page.title }}</h1>
+    {% else %}
+      <h1>{{ site.name }}</h1>
+      {% include search.html %}
+      <small class='text-center'><a class="recipes-link" href="{{ "/archive" | prepend: site.baseurl }}">View recipes by category</a></small>
+    {% endif %}
+
+  </div>
+
+</header>
