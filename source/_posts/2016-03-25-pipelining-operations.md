@@ -11,7 +11,7 @@ The `|>` (pipe) operator introduces the expression on the left-hand side as the 
 {% highlight elixir %}
 nums = [1,[2],3]
 nums
-|> List.flatten
+|> List.flatten()
 |> Enum.map(fn x -> x * 2 end)
 {% endhighlight %}
 
@@ -29,11 +29,11 @@ Here's another example taken from the [Ecto](https://github.com/elixir-lang/ecto
 {% highlight elixir %}
 defp default_index_name(index) do
   [index.table, index.columns, "index"]
-  |> List.flatten
+  |> List.flatten()
   |> Enum.join("_")
   |> String.replace(~r"[^\w_]", "_")
   |> String.replace("__", "_")
-  |> String.to_atom
+  |> String.to_atom()
 end
 {% endhighlight %}
 
