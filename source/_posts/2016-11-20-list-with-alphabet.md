@@ -6,10 +6,18 @@ category: "strings"
 comments: true
 ---
 
-A char list containing the alphabet can be obtained by doing the following:
+A charlist containing the alphabet can be obtained by doing the following:
 
 {% highlight elixir %}
 iex> for n <- ?a..?z, do: n
+'abcdefghijklmnopqrstuvwxyz'
+{% endhighlight %}
+
+Alternatively, since ranges i.e `?a..?z` implement the [`Enumerable`](https://hexdocs.pm/elixir/Enumerable.html) protocol, you can also
+generate the charlist by converting the range to a list:
+
+{% highlight elixir %}
+iex> Enum.to_list(?a..?z)
 'abcdefghijklmnopqrstuvwxyz'
 {% endhighlight %}
 
@@ -24,3 +32,6 @@ iex> for n <- ?a..?z, do: << n :: utf8 >>
 
 **Additional reading:**
 - [Binaries, strings, and char lists](http://elixir-lang.org/getting-started/binaries-strings-and-char-lists.html)
+- [Comprehensions](https://elixir-lang.org/getting-started/comprehensions.html)
+- [Enum](https://hexdocs.pm/elixir/Enum.html)
+- [Range](https://hexdocs.pm/elixir/Range.html)
